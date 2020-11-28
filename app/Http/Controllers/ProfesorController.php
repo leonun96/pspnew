@@ -30,7 +30,7 @@ class ProfesorController extends Controller
 	{
 		$profesores = Profesores::all();
 		
-		return view('profesores.agregar_alumno')
+		return view('profesores.agregar.alumno')
 		->with('profesores',$profesores);
 	}
 	public function nuevoAlumno(Request $request)
@@ -77,7 +77,7 @@ class ProfesorController extends Controller
 
 	public function verAlumnos(){
 		$alumnos = Alumnos::all();
-		return view('profesores.ver_alumnos')
+		return view('profesores.ver.alumnos')
 		->with('alumnos',$alumnos);
 	}
 
@@ -110,7 +110,7 @@ class ProfesorController extends Controller
 	{
 		$categorias = Categorias::all();
 		$niveles = Niveles::all();
-		return view('profesores.agregar_actividad')
+		return view('profesores.agregar.actividad')
 		->with('categorias',$categorias)
 		->with('niveles',$niveles);
 	}

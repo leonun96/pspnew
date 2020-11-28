@@ -4,8 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Actividades extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    protected $table='actividades';
+	protected  $guarded = [];
+
+	public function subcategorias ()
+	{
+		return $this->belongsTo('App\Models\Subcategorias');
+	}
+	public function niveles ()
+	{
+		return $this->belongsTo('App\Models\Niveles');
+	}
+	public function preguntas ()
+	{
+		return $this->hasMany('App\Models\Preguntas');
+	}
 }
