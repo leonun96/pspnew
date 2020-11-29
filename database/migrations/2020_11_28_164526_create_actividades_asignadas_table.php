@@ -16,8 +16,9 @@ class CreateActividadesAsignadasTable extends Migration
         // debo arreglar la tabla
         Schema::create('actividades_asignadas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('profesores_id')->nullable();
-            $table->unsignedBigInteger('alumnos_id')->nullable();
+            $table->foreignId('actividades_id')->constrained('actividades')->nullable();
+            $table->foreignId('profesores_id')->constrained('profesores')->nullable();
+            $table->foreignId('alumnos_id')->constrained('alumnos')->nullable();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_termino')->nullable();
             $table->time('tiempo')->nullable();

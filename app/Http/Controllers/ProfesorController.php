@@ -216,6 +216,7 @@ class ProfesorController extends Controller
 	public function asignarActividad(Actividades $id)
 	{	
 		$actividad = $id;
+		
 		$datos = request()->validate([
 			'desde' => 'required',
 			'hasta' => 'required',
@@ -227,6 +228,7 @@ class ProfesorController extends Controller
 		foreach($datos['alumnos_id'] as $dato){
 		//   dump($dato);
 			$asignada= new ActividadesAsignadas;
+			$asignada->actividades_id = $actividad->id;
 			$asignada->profesores_id = Auth()->user()->id;
 			$asignada->alumnos_id = $dato;
 			$asignada->fecha_inicio = $datos['desde'];
@@ -236,8 +238,8 @@ class ProfesorController extends Controller
 			$asignada->save();
 		}
 
-		return back();
-		// ActividadesAsignadas
+		return back()
+		->with('flash','La actividad se asigno correctamente');
 
 	}
 }

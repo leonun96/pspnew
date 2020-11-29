@@ -10,6 +10,15 @@
 		<h3 class="card-title">Listado de actividades</h3>
 	</div>
 
+	@if(session()->has('flash'))
+	<br>
+	<div class="container">
+		<div class="alert alert-success">
+			{{ session('flash') }}
+		</div>
+	</div>
+	@endif
+
 	<div class="card-body">
 		<table id="tabla-actividades" class="table table-bordered table-striped">
 			<thead>
