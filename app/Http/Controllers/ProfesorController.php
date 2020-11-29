@@ -128,11 +128,12 @@ class ProfesorController extends Controller
 			'subcategorias'=> 'required',
 			'niveles' => 'required',
 		]);
-
+		
 		$actividad = new Actividades;
 		$actividad->nombre = $request->nombre;
 		$actividad->subcategorias_id = $request->subcategorias;
 		$actividad->niveles_id = $request->niveles;
+		$actividad->profesores_id = Auth()->user()->id;
 		$actividad->save();
 		return redirect()->route('profesor.agregarPreguntas',$actividad->id);
 
@@ -204,7 +205,7 @@ class ProfesorController extends Controller
 	public function verActividades()
 	{
 		
-		$actividades = Actividades::all();
+		$actividades = Actividades::where('profesores_id', Auth()->user()->id)->get();
 		return view('profesores.ver.actividad')
 		->with('actividades',$actividades);
 

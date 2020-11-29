@@ -18,6 +18,7 @@ class CreateActividadesTable extends Migration
             $table->string('nombre')->nullable();
             $table->foreignId('subcategorias_id')->constrained('subcategorias')->nullable();
             $table->foreignId('niveles_id')->constrained('niveles')->nullable();
+            $table->foreignId('profesores_id')->constrained('profesores')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
