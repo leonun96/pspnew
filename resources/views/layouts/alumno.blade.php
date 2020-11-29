@@ -27,7 +27,7 @@
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-dark-purple elevation-4">
 		<!-- Brand Logo -->
-		<a href="{{ route('menu') }}" class="brand-link">
+		<a href="" class="brand-link">
 			<img src="{{ asset('AdminLte/img/AdminLTELogo.png') }}" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
 			<span class="brand-text font-weight-light">PSP SYSTEM</span>
 		</a>
@@ -39,7 +39,7 @@
 					<img src="{{ asset('AdminLte/img/user5-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
-					<a href="{{ route('menu') }}" class="d-block">{{ Auth::guard('alumno')->user()->nombres }} {{ Auth::guard('alumno')->user()->apellidos }}</a>
+					<a href=" class="d-block">{{ Auth::guard('alumno')->user()->nombres }} {{ Auth::guard('alumno')->user()->apellidos }}</a>
 				</div>
 			</div>
 			<!-- Sidebar Menu -->
@@ -52,12 +52,12 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('agregarAlumno') }}" class="nav-link">
+								<a href="" class="nav-link">
 									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ route('verAlumnos') }}" class="nav-link ">
+								<a href="" class="nav-link ">
 									<i class="far fa-circle nav-icon"></i><p>Visualizar alumnos</p>
 								</a>
 							</li>
@@ -69,11 +69,11 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('agregarActividad') }}" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Crear actividad</p>
+								<a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Crear actividad</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href=" {{ route('verActividades') }}" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Visualizar actividades</p>
+								<a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Visualizar actividades</p>
 								</a>
 							</li>
 						</ul>
@@ -96,7 +96,7 @@
 		  </div><!-- /.col -->
 		  <div class="col-sm-6">
 			<ol class="breadcrumb float-sm-right">
-			  <li class="breadcrumb-item"><a href="{{ route('menu') }}">Inicio</a></li>
+			  <li class="breadcrumb-item"><a href="">Inicio</a></li>
 			  <li class="breadcrumb-item active">@yield('direccion')</li>
 			</ol>
 		  </div><!-- /.col -->

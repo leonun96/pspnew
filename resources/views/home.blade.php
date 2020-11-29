@@ -73,7 +73,7 @@
 								<div class="card-body">
 									<!-- Acá contenido -->
 									<h5 class="card-title">Si eres alumno</h5>
-									<a href="{{ route('alumno.acceso') }}" class="btn btn-dark stretched-link">Click Aquí!</a>
+									<a href="{{ route('alumno.accesoAlumno') }}" class="btn btn-dark stretched-link">Click Aquí!</a>
 								</div>
 							</div>
 						</div>

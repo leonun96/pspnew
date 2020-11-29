@@ -20,4 +20,14 @@ class AlumnosController extends Controller
 	{
 		//
 	}
+
+	public function menuPrincipal()
+	{
+		$alumnos = Alumnos::all()->count();
+		$act = Actividades::all()->count();
+		// dd($alumnos);
+		return view('alumnos.menu')
+		->with('act',$act)
+		->with('alumnos',$alumnos);
+	}
 }

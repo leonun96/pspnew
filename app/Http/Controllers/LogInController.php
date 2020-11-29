@@ -43,6 +43,7 @@ class LogInController extends Controller
 	public function logoutP ()
 	{
 		Auth::guard('profesores')->logout();
+		return redirect()->route('profesor.acceso');
 	}
 	/* ########## LOGIN ALUMNOS ########## */
 	public function accesoAlumnos()
@@ -52,10 +53,13 @@ class LogInController extends Controller
 	
 	public function loginAlumnos (Request $request)
 	{
+		
+		
 		$datos = $request->validate([
 			'email' => 'email|required|string',
 			'password' => 'required|string',
 		]);
+
 		if(Auth::guard('alumno')->attempt($datos)){
 			return redirect()->route('alumno.menu');
 		}else{
