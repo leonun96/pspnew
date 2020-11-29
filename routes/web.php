@@ -47,6 +47,8 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::post('/nueva-pregunta/{actividad}','ProfesorController@nuevaPregunta')->name('nuevaPregunta');
 		Route::get('/ver-actividades', 'ProfesorController@verActividades')->name('verActividades');
 		Route::get('actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
+		Route::put('actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
+		
 	});
 });
 

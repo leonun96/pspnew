@@ -10,9 +10,11 @@ use App\Models\Categorias;
 use App\Models\Subcategorias;
 use App\Models\Alumnos;
 use App\Models\Actividades;
+use App\Models\ActividadesAsignadas;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
 use Flash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfesorController extends Controller
 {
@@ -204,10 +206,38 @@ class ProfesorController extends Controller
 	
 	public function verActividades()
 	{
-		
+		$alumnos = Alumnos::where('profesores_id', Auth()->user()->id)->get();
 		$actividades = Actividades::where('profesores_id', Auth()->user()->id)->get();
 		return view('profesores.ver.actividad')
+		->with('alumnos',$alumnos)
 		->with('actividades',$actividades);
+
+	}
+	public function asignarActividad(Actividades $id)
+	{	
+		$actividad = $id;
+		$datos = request()->validate([
+			'desde' => 'required',
+			'hasta' => 'required',
+			'tiempo' => 'required',
+			'alumnos_id'=> 'required'
+		]);
+		
+		
+		foreach($datos['alumnos_id'] as $dato){
+		//   dump($dato);
+			$asignada= new ActividadesAsignadas;
+			$asignada->profesores_id = Auth()->user()->id;
+			$asignada->alumnos_id = $dato;
+			$asignada->fecha_inicio = $datos['desde'];
+			$asignada->fecha_termino = $datos['hasta'];
+			$asignada->tiempo = $datos['tiempo'];
+			$asignada->estado = "ACTIVO";
+			$asignada->save();
+		}
+
+		return back();
+		// ActividadesAsignadas
 
 	}
 }

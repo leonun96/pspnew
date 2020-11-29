@@ -13,6 +13,7 @@ class CreateActividadesAsignadasTable extends Migration
      */
     public function up()
     {
+        // debo arreglar la tabla
         Schema::create('actividades_asignadas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('profesores_id')->nullable();
