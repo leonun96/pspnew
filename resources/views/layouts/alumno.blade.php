@@ -39,7 +39,7 @@
 					<img src="{{ asset('AdminLte/img/user5-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
-					<a href=" class="d-block">{{ Auth::guard('alumno')->user()->nombres }} {{ Auth::guard('alumno')->user()->apellidos }}</a>
+					<a href="" class="d-block">{{ Auth::guard('alumno')->user()->nombres }} {{ Auth::guard('alumno')->user()->apellidos }}</a>
 				</div>
 			</div>
 			<!-- Sidebar Menu -->
@@ -48,36 +48,42 @@
 					<!-- ESTO ES EL SIDEBAR DEL LADO IZQUIERO DE LA PANTALLA !! -->
 					<li class="nav-item has-treeview menu-close">
 						<a href="#" class="nav-link active">
-							<i class="nav-icon fas fa-user"></i><p>Gestion de alumnos<i class="fas fa-angle-left right"></i></p>
+							<i class="nav-icon fas fa-edit"></i><p>Actividades<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
 								<a href="" class="nav-link">
-									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
+									<i class="far fa-circle nav-icon"></i><p>Realizar actividades</p>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a href="" class="nav-link ">
-									<i class="far fa-circle nav-icon"></i><p>Visualizar alumnos</p>
+									<i class="far fa-circle nav-icon"></i><p>Ver resultados</p>
 								</a>
 							</li>
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
 						<a href="#" class="nav-link active">
-							<i class="nav-icon fas fa-edit"></i><p>Actividades<i class="fas fa-angle-left right"></i></p>
+							<i class="nav-icon fas fa-file-alt"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Crear actividad</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Visualizar actividades</p>
+								<a href="" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Listado de documentos</p>
 								</a>
 							</li>
 						</ul>
 					</li>
+					<li class="nav-item has-treeview menu-close">
+						<a href="#" class="nav-link active">
+							<i class="nav-icon fas fa-comments"></i><p>Mensajeria</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview menu-close">
+					<a href="{{ route('alumno.editar') }}" class="nav-link active">
+							<i class="nav-icon fas fa-user"></i><p>Perfil</p>
+						</a>
+					</li>		
 				</ul>
 			</nav>
 			<!-- /.sidebar-menu -->
