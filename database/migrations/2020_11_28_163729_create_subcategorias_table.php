@@ -18,6 +18,7 @@ class CreateSubcategoriasTable extends Migration
             $table->string('nombre')->nullable();
             $table->foreignId('categorias_id')->constrained('categorias')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

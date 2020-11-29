@@ -153,7 +153,7 @@ class ProfesorController extends Controller
 	{
 		
 		$actividad = Actividades::find($actividad)->load(['preguntas','preguntas.respuestas']);	
-		return view('profesores.agregar_preguntas')
+		return view('profesores.agregar.preguntas')
 		->with('actividad',$actividad);
 	}
 
@@ -205,7 +205,7 @@ class ProfesorController extends Controller
 	{
 		
 		$actividades = Actividades::all();
-		return view('profesores.ver_actividades')
+		return view('profesores.ver.actividad')
 		->with('actividades',$actividades);
 
 	}

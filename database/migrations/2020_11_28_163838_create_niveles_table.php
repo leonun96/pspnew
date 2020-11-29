@@ -18,6 +18,7 @@ class CreateNivelesTable extends Migration
             $table->string('COD')->nullable();
             $table->string('nivel')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

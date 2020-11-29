@@ -19,6 +19,7 @@ class CreatePreguntasTable extends Migration
             $table->string('imagen')->nullable();
             $table->foreignId('actividades_id')->constrained('actividades')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

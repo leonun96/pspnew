@@ -90,7 +90,7 @@
 							
 							@foreach ($pregunta->respuestas as $res)
 							<div class="row">
-								<p>ALTERNATIVA: {{ $res->respuesta }}  ||
+								<p>ALTERNATIVA: {{ $res->respuesta }}  
 									@if ($res->correcta == 'si')
 										<i class="fa fa-check bg-success" aria-hidden="true"></i>
 									@else
