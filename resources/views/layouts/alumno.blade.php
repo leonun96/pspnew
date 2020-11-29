@@ -52,7 +52,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="" class="nav-link">
+								<a href="{{route('alumno.verActividades')}}" class="nav-link">
 									<i class="far fa-circle nav-icon"></i><p>Realizar actividades</p>
 								</a>
 							</li>

@@ -40,13 +40,13 @@
 						<td>{{ $act->subcategorias->nombre }}, {{ $act->subcategorias->categorias->nombre }}</td>
 						<td>{{ $act->niveles->nivel }}</td>
 						<td>
-							<button type="submit" class="btn btn-block btn-outline-warning" data-toggle="modal" data-target="#modal-{{ $act->id }}">
+							<button type="submit" class="btn btn-block btn-outline-warning">
 								<i class="fas fa-eye"></i>
 							</button>
 						</td> 
 						<td>
 							<button type="submit" class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#modal-{{ $act->id }}">
-								<i class="fas fa-eye"></i>
+								<i class="fas fa-file-signature"></i>
 							</button>
 						</td> 
 						<td>

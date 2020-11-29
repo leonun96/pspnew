@@ -20,4 +20,9 @@ class ActividadesAsignadas extends Model
 	{
 		return $this->belongsTo('App\Models\Profesores');
 	}
+	public function actividadesAsignadas()
+	{
+		return $this->belongsTo('App\Models\Alumnos');
+	}
 }
+

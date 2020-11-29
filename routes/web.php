@@ -60,6 +60,7 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 	Route::group(['middleware' => ['auth:alumno']], function() {
 		/* ##### Rutas que requieren autenticación ##### */
 		Route::get('/menu', 'AlumnosController@menuPrincipal')->name('menu');
+		Route::get('/actividades', 'AlumnosController@verActividades')->name('verActividades');
 		Route::get('/editar','AlumnosController@editar')->name('editar');
 		Route::post('/editar/perfil/','AlumnosController@editarPerfil')->name('editarPerfil');
 	});

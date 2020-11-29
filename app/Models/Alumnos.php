@@ -19,4 +19,8 @@ class Alumnos extends Authenticatable
 	{
 		return $this->belongsTo('App\Models\Profesores');
 	}
+	public function actividadesAsignadas(){
+
+		return $this->hasMany('App\Models\ActividadesAsignadas');
+	}
 }
