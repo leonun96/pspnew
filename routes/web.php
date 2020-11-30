@@ -52,6 +52,7 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('/documento','ProfesorController@subirDoc')->name('subirDoc');
 		Route::post('/documento/subir','ProfesorController@uploadDoc')->name('uploadDoc');
 		Route::get('/documento/ver','ProfesorController@verDoc')->name('verDoc');
+		Route::put('/documento/asignar/{id}','ProfesorController@asignarDocumento')->name('asignarDoc');
 	});
 });
 

@@ -15,6 +15,7 @@ use App\Models\Actividades;
 use Illuminate\Http\Request;
 use App\Models\Subcategorias;
 use App\Models\ActividadesAsignadas;
+use App\Models\DocumentosAsignados;
 use Illuminate\Support\Facades\Auth;
 
 class ProfesorController extends Controller
@@ -276,8 +277,30 @@ class ProfesorController extends Controller
 	public function verDoc()
 	{
 		$documentos=Documentos::all()->where('profesores_id',Auth()->user()->id);
+		$alumnos = Alumnos::all()->where('profesores_id',Auth()->user()->id);
 		return view('profesores.ver.documentos')
+		->with('alumnos',$alumnos)
 		->with('documentos',$documentos);
+	}
+	public function asignarDocumento(Documentos $id){
+
+		$documento = $id;
+		
+		$datos = request()->validate([
+			'alumnos_id'=> 'required'
+		]);
+		
+		// dump($datos);
+		foreach($datos['alumnos_id'] as $dato){
+	
+		  	$asignado= new DocumentosAsignados();
+			$asignado->documentos_id = $documento->id;
+			$asignado->alumnos_id = $dato;
+			$asignado->profesores_id = Auth()->user()->id;
+			$asignado->save();
+		}
+		return back()
+		->with('flash','El documento se asigno correctamente');
 	}
 
 }
