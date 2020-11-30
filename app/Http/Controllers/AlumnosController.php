@@ -36,7 +36,10 @@ class AlumnosController extends Controller
 	}
 	public function realizarAct(Actividades $actividad)
 	{
-		$actividad= $actividad->load(['preguntas','preguntas.respuestas']);
+		// $actividad= $actividad->load(['preguntas','preguntas.respuestas']);
+		$actividad= $actividad->load(['preguntas','preguntas.respuestas' => function ($query){
+            $query->inRandomOrder();
+        }]);
 		// foreach ($actividad->preguntas as $pregunta) {
 		// 	dump($pregunta);
 		// 	foreach($pregunta->respuestas as $respuestas){

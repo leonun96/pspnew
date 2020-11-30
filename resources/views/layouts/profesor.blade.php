@@ -82,6 +82,23 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
+						<a href="#" class="nav-link active">
+							<i class="nav-icon fas fa-file"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{ route('profesor.subirDoc') }}" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Subir documento</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ route('profesor.verDoc') }}" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Ver Documentos</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item has-treeview menu-close">
 						<a href="{{ route('profesor.logout') }}" class="nav-link active">
 							<i class="nav-icon fas fa-sign-out-alt"></i><p>Cerrar Sesion</p>
 						</a>

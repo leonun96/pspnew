@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Niveles;
-use App\Models\Profesores;
-use App\Models\Categorias;
-use App\Models\Subcategorias;
-use App\Models\Alumnos;
-use App\Models\Actividades;
-use App\Models\ActividadesAsignadas;
-use App\Models\Preguntas;
-use App\Models\Respuestas;
 use Flash;
+use App\Models\User;
+use App\Models\Alumnos;
+use App\Models\Niveles;
+use App\Models\Preguntas;
+use App\Models\Categorias;
+use App\Models\Documentos;
+use App\Models\Profesores;
+use App\Models\Respuestas;
+use App\Models\Actividades;
+use Illuminate\Http\Request;
+use App\Models\Subcategorias;
+use App\Models\ActividadesAsignadas;
 use Illuminate\Support\Facades\Auth;
 
 class ProfesorController extends Controller
@@ -242,4 +243,41 @@ class ProfesorController extends Controller
 		->with('flash','La actividad se asigno correctamente');
 
 	}
+
+	public function subirDoc()
+	{
+		return view('profesores.agregar.documento');
+	}
+
+	public function uploadDoc(Request $request)
+	{
+
+		if($request->hasfile('archivo')){
+
+			$file = $request->file('archivo');
+			$nombre = $file->getClientOriginalName();
+			$file->move(public_path().'/archivos',$nombre);
+
+			$documento= new Documentos;
+			$documento->ruta = $nombre;
+			$documento->profesores_id = Auth()->user()->id;
+			$documento->save();
+
+			return back()
+			->with('flash','El documento se subio correctamente');
+		}
+		else
+		{
+			$nombre ='';
+			return back()
+			->with('flash','Error: el documento no se subio correctamente');
+		}
+	}	
+	public function verDoc()
+	{
+		$documentos=Documentos::all()->where('profesores_id',Auth()->user()->id);
+		return view('profesores.ver.documentos')
+		->with('documentos',$documentos);
+	}
+
 }

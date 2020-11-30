@@ -46,9 +46,12 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('/agregar-preguntas/{actividad}','ProfesorController@agregarPreguntas')->name('agregarPreguntas');
 		Route::post('/nueva-pregunta/{actividad}','ProfesorController@nuevaPregunta')->name('nuevaPregunta');
 		Route::get('/ver-actividades', 'ProfesorController@verActividades')->name('verActividades');
-		Route::get('actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
-		Route::put('actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
+		Route::get('/actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
+		Route::put('/actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
 		
+		Route::get('/documento','ProfesorController@subirDoc')->name('subirDoc');
+		Route::post('/documento/subir','ProfesorController@uploadDoc')->name('uploadDoc');
+		Route::get('/documento/ver','ProfesorController@verDoc')->name('verDoc');
 	});
 });
 
@@ -56,6 +59,7 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 	/* RUTAS PARA EL ALUMNO LOGIN */
 	Route::get('/', 'LogInController@accesoAlumnos')->name('accesoAlumno');
 	Route::post('/login', 'LogInController@loginAlumnos')->name('loginAlumno');
+	Route::get('logout', 'LogInController@logoutA')->name('logout');
 
 	Route::group(['middleware' => ['auth:alumno']], function() {
 		/* ##### Rutas que requieren autenticación ##### */

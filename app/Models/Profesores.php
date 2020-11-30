@@ -17,4 +17,8 @@ class Profesores extends Authenticatable
 	{
 		return $this->hasMany('App\Models\Alumnos');
 	}
+	public function documentos ()
+	{
+		return $this->hasMany('App\Models\Documentos');
+	}
 }

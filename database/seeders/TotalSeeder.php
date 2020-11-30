@@ -27,6 +27,15 @@ class TotalSeeder extends Seeder
 			'email' => 'profesor@test.com',
 			'password' => bcrypt('123123')
 		]);
+		Profesores::create([
+			'rut' => '22222222-2',
+			'nombres' => 'Alumno',
+			'apellidos' => 'Nuñez',
+			'fnac' => '1970-02-02',
+			'telefono' => '123123123',
+			'email' => 'a@a',
+			'password' => bcrypt('123123')
+		]);
 		Categorias::create([
 			'COD' => 'MAT',
 			'nombre' => 'Matematicas'

@@ -12,7 +12,7 @@
                     <p class="text-bold uppercase h1">{{$pregunta->pregunta}}</p>
                     @foreach ($pregunta->respuestas as $respuesta)
                     <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio"  name="respuesta_{{$respuesta->id}}" class="form-group" value="{{$respuesta->respuesta}}">
+                    <input type="radio"  name="pregunta[{{$pregunta->id}}]" class="form-group" value="{{$respuesta->id}}">
                         <p class="ml-2">{{$respuesta->respuesta}}</p>
                     </div>
                     @endforeach
