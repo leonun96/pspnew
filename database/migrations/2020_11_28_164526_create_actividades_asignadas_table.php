@@ -21,7 +21,7 @@ class CreateActividadesAsignadasTable extends Migration
             $table->foreignId('alumnos_id')->constrained('alumnos')->nullable();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_termino')->nullable();
-            $table->time('tiempo')->nullable();
+            $table->double('tiempo')->nullable();
             $table->string('estado')->nullable();
             $table->softDeletes();
             $table->timestamps();

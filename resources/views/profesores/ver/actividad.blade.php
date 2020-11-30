@@ -92,7 +92,7 @@
 					</div>
 					<div class="col mt-1">
 						<label for="tiempo">Tiempo en minutos</label>
-					  <input type="time" class="form-control" name="tiempo" placeholder="tiempo">
+					  <input type="number" class="form-control" name="tiempo" placeholder="tiempo">
 					</div>
 
 					<h5 class="text-center uppercase text-bold mt-2">Listado de alumnos</h5>

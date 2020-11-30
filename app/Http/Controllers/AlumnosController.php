@@ -16,6 +16,7 @@ use App\Models\Respuestas;
 use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AlumnosController extends Controller
 {
@@ -33,6 +34,24 @@ class AlumnosController extends Controller
 		->with('act',$act)
 		->with('alumnos',$alumnos);
 	}
+	public function realizarAct(Actividades $actividad)
+	{
+		$actividad= $actividad->load(['preguntas','preguntas.respuestas']);
+		// foreach ($actividad->preguntas as $pregunta) {
+		// 	dump($pregunta);
+		// 	foreach($pregunta->respuestas as $respuestas){
+		// 		dump($respuestas);
+		// 	}
+		// }
+		return view('alumnos.ver.actividad')
+		->with('actividad',$actividad);
+		
+	}
+	public function finalizada(Request $request)
+	{
+		dd($request);
+	}
+
 	public function verActividades()
 	{
 		//traer actividades asignadas al alumno logeado
