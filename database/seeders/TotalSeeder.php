@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Niveles;
 use App\Models\Profesores;
+use App\Models\Alumnos;
 use App\Models\Categorias;
 use App\Models\Subcategorias;
 
@@ -27,13 +28,15 @@ class TotalSeeder extends Seeder
 			'email' => 'profesor@test.com',
 			'password' => bcrypt('123123')
 		]);
-		Profesores::create([
+		Alumnos::create([
 			'rut' => '22222222-2',
 			'nombres' => 'Alumno',
 			'apellidos' => 'Nuñez',
 			'fnac' => '1970-02-02',
 			'telefono' => '123123123',
 			'email' => 'a@a',
+			'profesores_id' => 1,
+			'NEE' => 'permanente',
 			'password' => bcrypt('123123')
 		]);
 		Categorias::create([
