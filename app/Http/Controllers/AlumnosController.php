@@ -13,6 +13,8 @@ use App\Models\Actividades;
 use App\Models\ActividadesAsignadas;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
+use App\Models\ResultadoEvaluacion;
+use App\Models\ResultadoDetalle;
 use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,16 +52,31 @@ class AlumnosController extends Controller
 		->with('actividad',$actividad);
 		
 	}
-	public function finalizada(Request $request)
+	public function finalizada(Request $request, $id)
 	{
-		dd($request);
+		// dd('En desarrollo',$request);
+		if (!isset($request->pregunta) or count($request->pregunta) == 0) {
+			$asig = ActividadesAsignadas::where('actividades_id',$id)
+				->where('alumnos_id', auth('alumno')->user()->id)
+				->first();
+			ResultadoEvaluacion::create([
+				'actividades_asignadas_id' => $asig->id,
+				'puntaje' => 0,
+				'nota' => 1.0,
+			]);
+			$asig->estado = "FINALIZADO";
+			$asig->update();
+			Flash::warning('Evaluacion finalizada, su nota es: 1.0');
+			return redirect()->route('alumno.menu');
+		}
 	}
 
 	public function verActividades()
 	{
 		//traer actividades asignadas al alumno logeado
-		$actividades = ActividadesAsignadas::all()
-		->where('alumnos_id',Auth()->user()->id);
+		$actividades = ActividadesAsignadas::where('estado', 'ACTIVO')
+			->where('alumnos_id',auth('alumno')->user()->id)
+			->get();
 
 		// foreach($actividades as $dato){
 		// 	dd($dato->actividades->nombre);

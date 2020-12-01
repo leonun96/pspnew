@@ -67,7 +67,7 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 		Route::get('/menu', 'AlumnosController@menuPrincipal')->name('menu');
 		Route::get('/actividades', 'AlumnosController@verActividades')->name('verActividades');
 		Route::get('/actividades/{actividad}/realizar', 'AlumnosController@realizarAct')->name('realizarAct');
-		Route::post('/actividades/finalizada','AlumnosController@finalizada')->name('finalizada');
+		Route::put('/actividades/{id}/finalizada','AlumnosController@finalizada')->name('finalizada');
 		Route::get('/editar','AlumnosController@editar')->name('editar');
 		Route::post('/editar/perfil/','AlumnosController@editarPerfil')->name('editarPerfil');
 	});
