@@ -57,7 +57,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="" class="nav-link ">
+								<a href="{{ route('alumno.actividades.resultados') }}" class="nav-link ">
 									<i class="far fa-circle nav-icon"></i><p>Ver resultados</p>
 								</a>
 							</li>

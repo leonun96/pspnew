@@ -84,6 +84,14 @@ class AlumnosController extends Controller
 
 		return view('alumnos.ver.actividades')->with('actividades',$actividades);
 	}
+	public function verResultados()
+	{
+		$actividades = ActividadesAsignadas::where('estado', 'FINALIZADO')
+			->where('alumnos_id',auth('alumno')->user()->id)
+			->get();
+
+		return view('alumnos.ver.actividades')->with('actividades',$actividades);
+	}
 
 	public function editar(){
 		$perfil = Auth('alumno')->user();
