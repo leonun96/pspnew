@@ -90,7 +90,7 @@ class AlumnosController extends Controller
 			->where('alumnos_id',auth('alumno')->user()->id)
 			->get();
 
-		return view('alumnos.ver.actividades')->with('actividades',$actividades);
+		return view('alumnos.ver.actividades2')->with('actividades',$actividades);
 	}
 
 	public function editar(){
