@@ -16,6 +16,7 @@ class CreateResultadoEvaluacionsTable extends Migration
 		Schema::create('resultado_evaluacions', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('actividades_asignadas_id')->constrained('actividades')->nullable();
+			$table->foreignId('alumnos_id')->constrained('alumnos')->nullable();
 			$table->double('puntaje')->nullable();
 			$table->double('nota')->nullable();
 			$table->timestamps();

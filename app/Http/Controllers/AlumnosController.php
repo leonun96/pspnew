@@ -54,13 +54,14 @@ class AlumnosController extends Controller
 	}
 	public function finalizada(Request $request, $id)
 	{
-		// dd('En desarrollo',$request);
+		//  dd('En desarrollo',$request);
 		if (!isset($request->pregunta) or count($request->pregunta) == 0) {
 			$asig = ActividadesAsignadas::where('actividades_id',$id)
 				->where('alumnos_id', auth('alumno')->user()->id)
 				->first();
 			ResultadoEvaluacion::create([
 				'actividades_asignadas_id' => $asig->id,
+				'alumnos_id' => auth('alumno')->user()->id,
 				'puntaje' => 0,
 				'nota' => 1.0,
 			]);
@@ -74,6 +75,7 @@ class AlumnosController extends Controller
 				->first();
 			$total = ResultadoEvaluacion::updateOrCreate([
 				'actividades_asignadas_id' => $asig->id,
+				'alumnos_id' => auth('alumno')->user()->id,
 				'puntaje' => null,
 				'nota' => null,
 			]);
@@ -87,6 +89,8 @@ class AlumnosController extends Controller
 					'correcta' => $res->correcta,
 				]);
 			}
+			$asig->estado = "FINALIZADO";
+			$asig->update();
 			Flash::warning('Evaluacion finalizada');
 			return redirect()->route('alumno.menu');
 		}
@@ -107,11 +111,13 @@ class AlumnosController extends Controller
 	}
 	public function verResultados()
 	{
-		$actividades = ActividadesAsignadas::where('estado', 'FINALIZADO')
-			->where('alumnos_id',auth('alumno')->user()->id)
-			->get();
-
-		return view('alumnos.ver.actividades2')->with('actividades',$actividades);
+		$resultados = ResultadoEvaluacion::where('alumnos_id', auth('alumno')->user()->id )->get();
+		return view('alumnos.ver.resultados')->with('resultados',$resultados);
+	}
+	public function verDetalles($id)
+	{
+		$detalle = ResultadoEvaluacion::find($id)->load(['detalle','detalle.preguntas','detalle.respuestas']);
+		return view('alumnos.ver.detalles')->with('detalle',$detalle);
 	}
 
 	public function editar(){

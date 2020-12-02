@@ -24,5 +24,9 @@ class ActividadesAsignadas extends Model
 	{
 		return $this->belongsTo('App\Models\Alumnos');
 	}
+	public function resultados ()
+	{
+		return $this->hasMany('App\Models\ResultadoEvaluacion');
+	}
 }
 

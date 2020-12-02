@@ -24,4 +24,5 @@ class Actividades extends Model
 	{
 		return $this->hasMany('App\Models\Preguntas');
 	}
+	
 }
