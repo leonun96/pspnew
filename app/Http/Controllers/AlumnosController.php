@@ -68,6 +68,27 @@ class AlumnosController extends Controller
 			$asig->update();
 			Flash::warning('Evaluacion finalizada, su nota es: 1.0');
 			return redirect()->route('alumno.menu');
+		} else {
+			$asig = ActividadesAsignadas::where('actividades_id',$id)
+				->where('alumnos_id', auth('alumno')->user()->id)
+				->first();
+			$total = ResultadoEvaluacion::updateOrCreate([
+				'actividades_asignadas_id' => $asig->id,
+				'puntaje' => null,
+				'nota' => null,
+			]);
+			foreach ($request->pregunta as $key => $value) {
+				// dump($key, $value);
+				$res = Respuestas::find($value);
+				ResultadoDetalle::create([
+					'resultado_evaluacions_id' => $total->id,
+					'preguntas_id' => $key,
+					'respuestas_selec' => $value,
+					'correcta' => $res->correcta,
+				]);
+			}
+			Flash::warning('Evaluacion finalizada');
+			return redirect()->route('alumno.menu');
 		}
 	}
 

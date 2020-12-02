@@ -18,7 +18,7 @@ class CreateResultadoDetallesTable extends Migration
 			$table->foreignId('resultado_evaluacions_id')->constrained('actividades')->nullable();
 			$table->foreignId('preguntas_id')->constrained('preguntas')->nullable();
 			$table->foreignId('respuestas_selec')->constrained('respuestas')->nullable();
-			$table->foreignId('correcta')->nullable();
+			$table->string('correcta')->nullable();
 			$table->timestamps();
 		});
 	}
