@@ -72,6 +72,7 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 		Route::put('/actividades/{id}/finalizada','AlumnosController@finalizada')->name('finalizada');
 		Route::get('/editar','AlumnosController@editar')->name('editar');
 		Route::post('/editar/perfil/','AlumnosController@editarPerfil')->name('editarPerfil');
+		Route::get('/documentos/ver','AlumnosController@verDocumentos')->name('verDocumentos');
 	});
 });
 /* ########## RUTAS DEFINITIVAS ########## */

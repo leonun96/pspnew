@@ -16,9 +16,13 @@ class DocumentosAsignados extends Model
 	{
 		return $this->belongsTo('App\Models\Documentos');
     }
-    public function documentosAsignados()
-	{
-		return $this->belongsTo('App\Models\DocumentosAsignados');
+    public function alumnos()
+	  {
+		return $this->belongsTo('App\Models\Alumnos');
+    }
+    public function documentos()
+	  {
+		return $this->belongsTo('App\Models\Documentos');
     }
     
 }

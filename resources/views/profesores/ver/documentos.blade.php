@@ -14,7 +14,7 @@
 	@if(session()->has('flash'))
 	<br>
 	<div class="container">
-		<div class="alert alert-danger">
+		<div class="alert alert-success">
 			{{ session('flash') }}
 		</div>
 	</div>

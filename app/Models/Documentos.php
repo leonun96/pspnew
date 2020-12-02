@@ -14,5 +14,8 @@ class Documentos extends Model
 	{
 		return $this->belongsTo('App\Models\Documentos');
 	}
-	
+	public function asignados(){
+
+		return $this->hasMany('App\Models\DocumentosAsignados');
+	}
 }

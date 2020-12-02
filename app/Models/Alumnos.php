@@ -23,7 +23,7 @@ class Alumnos extends Authenticatable
 
 		return $this->hasMany('App\Models\ActividadesAsignadas');
 	}
-	public function documentosAsignados(){
+	public function documentos(){
 
 		return $this->hasMany('App\Models\DocumentosAsignados');
 	}

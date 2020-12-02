@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Niveles;
-use App\Models\Profesores;
-use App\Models\Categorias;
-use App\Models\Subcategorias;
-use App\Models\Alumnos;
-use App\Models\Actividades;
-use App\Models\ActividadesAsignadas;
-use App\Models\Preguntas;
-use App\Models\Respuestas;
-use App\Models\ResultadoEvaluacion;
-use App\Models\ResultadoDetalle;
 use Flash;
+use App\Models\User;
+use App\Models\Alumnos;
+use App\Models\Niveles;
+use App\Models\Preguntas;
+use App\Models\Categorias;
+use App\Models\Documentos;
+use App\Models\Profesores;
+use App\Models\Respuestas;
+use App\Models\Actividades;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\Subcategorias;
+use App\Models\ResultadoDetalle;
+use App\Models\ResultadoEvaluacion;
+use App\Models\ActividadesAsignadas;
+use App\Models\DocumentosAsignados;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class AlumnosController extends Controller
 {
@@ -118,6 +120,12 @@ class AlumnosController extends Controller
 	{
 		$detalle = ResultadoEvaluacion::find($id)->load(['detalle','detalle.preguntas','detalle.respuestas']);
 		return view('alumnos.ver.detalles')->with('detalle',$detalle);
+	}
+	public function verDocumentos()
+	{
+		$documentos = DocumentosAsignados::where('alumnos_id', Auth('alumno')->user()->id)->get();
+		return view('alumnos.ver.documentos')
+		->with('documentos',$documentos);
 	}
 
 	public function editar(){
