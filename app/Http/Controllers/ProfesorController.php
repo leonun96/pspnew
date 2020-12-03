@@ -253,7 +253,12 @@ class ProfesorController extends Controller
 
 	public function uploadDoc(Request $request)
 	{
-
+		$request->validate([
+			'archivo' => 'required|file|mimes:pdf,txt,docx',
+		],[
+			'archivo.required' => 'Debe proporcionar un archivo válido',
+			'archivo.file' => 'Debe proporcionar un archivo válido',
+		]);
 		if($request->hasfile('archivo')){
 
 			$file = $request->file('archivo');
