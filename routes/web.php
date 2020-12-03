@@ -48,11 +48,12 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('/ver-actividades', 'ProfesorController@verActividades')->name('verActividades');
 		Route::get('/actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
 		Route::put('/actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
-		
+		/* ########## DOCUMENTOS ########## */
 		Route::get('/documento','ProfesorController@subirDoc')->name('subirDoc');
 		Route::post('/documento/subir','ProfesorController@uploadDoc')->name('uploadDoc');
 		Route::get('/documento/ver','ProfesorController@verDoc')->name('verDoc');
 		Route::put('/documento/asignar/{id}','ProfesorController@asignarDocumento')->name('asignarDoc');
+		/* ########## DOCUMENTOS ########## */
 	});
 });
 

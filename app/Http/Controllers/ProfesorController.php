@@ -17,6 +17,7 @@ use App\Models\Subcategorias;
 use App\Models\ActividadesAsignadas;
 use App\Models\DocumentosAsignados;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class ProfesorController extends Controller
 {
@@ -301,6 +302,10 @@ class ProfesorController extends Controller
 		}
 		return back()
 		->with('flash','El documento se asigno correctamente');
+	}
+	public function downloadDoc ($nombre)
+	{
+		return Storage::download($nombre);
 	}
 
 }
