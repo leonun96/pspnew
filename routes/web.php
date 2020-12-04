@@ -34,13 +34,15 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		/* ##### Rutas que requieren autenticación ##### */
 		Route::get('logout', 'LogInController@logoutP')->name('logout');
 		Route::get('/menu','ProfesorController@menuPrincipal')->name('menu');
-
+		/* ########## GESTION DE ALUMNO ########## */
 		Route::get('/agregar-alumno','ProfesorController@agregarAlumno')->name('agregarAlumno');
 		Route::post('/nuevo-alumno','ProfesorController@nuevoAlumno')->name('nuevoAlumno');
 		Route::get('/alumnos', 'ProfesorController@verAlumnos')->name('verAlumnos');
 		Route::delete('/eliminar-alumno/{id}', 'ProfesorController@eliminarAlumno')->name('eliminarAlumno');
 		Route::post('/editar-alumno/{id}','ProfesorController@editarAlumno')->name('editarAlumno');
+		/* ########## GESTION DE ALUMNO ########## */
 
+		/* ########## ACTIVIDAD ########## */
 		Route::get('/agregar-actividad','ProfesorController@agregarActividad')->name('agregarActividad');
 		Route::post('/nueva-actividad','ProfesorController@nuevaActividad')->name('nuevaActividad');
 		Route::get('/agregar-preguntas/{actividad}','ProfesorController@agregarPreguntas')->name('agregarPreguntas');
@@ -48,12 +50,19 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('/ver-actividades', 'ProfesorController@verActividades')->name('verActividades');
 		Route::get('/actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
 		Route::put('/actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
+		/* ########## ACTIVIDAD ########## */
+		
 		/* ########## DOCUMENTOS ########## */
 		Route::get('/documento','ProfesorController@subirDoc')->name('subirDoc');
 		Route::post('/documento/subir','ProfesorController@uploadDoc')->name('uploadDoc');
 		Route::get('/documento/ver','ProfesorController@verDoc')->name('verDoc');
 		Route::put('/documento/asignar/{id}','ProfesorController@asignarDocumento')->name('asignarDoc');
 		/* ########## DOCUMENTOS ########## */
+
+		/* ########## PERFIL ########## */
+		Route::get('/editar','ProfesorController@editar')->name('editar');
+		Route::post('/editar/perfil/','ProfesorController@editarPerfil')->name('editarPerfil');
+		/* ########## PERFIL ########## */
 	});
 });
 
@@ -66,14 +75,23 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 	Route::group(['middleware' => ['auth:alumno']], function() {
 		/* ##### Rutas que requieren autenticación ##### */
 		Route::get('/menu', 'AlumnosController@menuPrincipal')->name('menu');
+
+		/* ########## ACTIVIDAD ########## */
 		Route::get('/actividades', 'AlumnosController@verActividades')->name('verActividades');
 		Route::get('/actividades/resultados', 'AlumnosController@verResultados')->name('actividades.resultados');
 		Route::get('/actividades/{id}/detalles','AlumnosController@verDetalles')->name('detalles');
 		Route::get('/actividades/{actividad}/realizar', 'AlumnosController@realizarAct')->name('realizarAct');
 		Route::put('/actividades/{id}/finalizada','AlumnosController@finalizada')->name('finalizada');
+		/* ########## ACTIVIDAD ########## */
+
+		/* ########## PERFIL ########## */
 		Route::get('/editar','AlumnosController@editar')->name('editar');
 		Route::post('/editar/perfil/','AlumnosController@editarPerfil')->name('editarPerfil');
+		/* ########## PERFIL ########## */
+
+		/* ########## DOCUMENTOS ########## */
 		Route::get('/documentos/ver','AlumnosController@verDocumentos')->name('verDocumentos');
+		/* ########## DOCUMENTOS ########## */
 	});
 });
 /* ########## RUTAS DEFINITIVAS ########## */

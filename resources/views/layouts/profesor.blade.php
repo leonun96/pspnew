@@ -99,6 +99,11 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
+					<a href="{{ route('profesor.editar')}}" class="nav-link active">
+							<i class="nav-icon fas fa-user"></i><p>Perfil</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview menu-close">
 						<a href="{{ route('profesor.logout') }}" class="nav-link active">
 							<i class="nav-icon fas fa-sign-out-alt"></i><p>Cerrar Sesion</p>
 						</a>
