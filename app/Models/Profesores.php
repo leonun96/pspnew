@@ -25,4 +25,8 @@ class Profesores extends Authenticatable
 	{
 		return $this->hasMany('App\Models\DocumentosAsignados');
 	}
+	public function diagnosticos ()
+	{
+		return $this->hasMany('App\Models\Diagnosticos');
+	}
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Flash;
+use Storage;
 use App\Models\User;
 use App\Models\Alumnos;
 use App\Models\Niveles;
@@ -12,12 +13,12 @@ use App\Models\Documentos;
 use App\Models\Profesores;
 use App\Models\Respuestas;
 use App\Models\Actividades;
+use App\Models\Diagnosticos;
 use Illuminate\Http\Request;
 use App\Models\Subcategorias;
-use App\Models\ActividadesAsignadas;
 use App\Models\DocumentosAsignados;
+use App\Models\ActividadesAsignadas;
 use Illuminate\Support\Facades\Auth;
-use Storage;
 
 class ProfesorController extends Controller
 {
@@ -351,6 +352,31 @@ class ProfesorController extends Controller
 		
 		return back()
 		->with('flash','El perfil a sido editado exitosamente');
+	}
+
+	public function nuevoDiagnostico($id)
+	{
+		$alumno = Alumnos::find($id);
+		return view('profesores.agregar.diagnostico')->with('alumno',$alumno);
+	}
+
+	public function diagnostico(Request $request)
+	{
+		// dump($request);
+
+		$validacion = $request->validate([
+			'rut' => 'required',
+			'diagnostico' => 'required'
+		]);
+
+		$diagnostico = new Diagnosticos;
+		$diagnostico->profesores_id = Auth('profesores')->user()->id;
+		$diagnostico->alumnos_id = $request->id;
+		$diagnostico->diagnostico = $validacion['diagnostico'];
+		$diagnostico->save();
+		
+		return redirect()->route('profesor.verAlumnos')
+		->with('flash','Se creo diagnostico correctamente');;
 	}
 
 

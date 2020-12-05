@@ -11,6 +11,15 @@
 		<h3 class="card-title">Listado de alumnos</h3>
 	</div>
 
+	@if(session()->has('flash'))
+	<br>
+	<div class="container">
+		<div class="alert alert-success">
+			{{ session('flash') }}
+		</div>
+	</div>
+	@endif
+
 	@if(session()->has('flash-deleted'))
 	<br>
 	<div class="container">
@@ -42,6 +51,7 @@
 				<th>NEE</th>
 				<th>Eliminar</th>
 				<th>Editar</th>
+				<th>Diagnosticos</th>
 				
 			</tr>
 			</thead>
@@ -60,13 +70,18 @@
 							@csrf
 							@method('DELETE')
 							<button type="submit" class="btn btn-block btn-outline-danger eliminar" name="eliminar">
-								<i class="fa fa-trash" aria-hidden="true"></i>
+								<i class="fa fa-trash" aria-hidden="true"></i>Eliminar
 							</button>
 						</form>
 					</td>
 					<td>
 						<button type="submit" class="btn btn-block btn-outline-warning" data-toggle="modal" data-target="#moda-{{ $alumno->id }}">
-							<i class="fa fa-edit" aria-hidden="true"></i>
+							<i class="fa fa-edit" aria-hidden="true"></i>Editar
+						</button>
+					</td>
+					<td>
+						<button type="submit" class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#moda2-{{ $alumno->id }}">
+							<i class="fas fa-stethoscope"></i>Diagnosticos
 						</button>
 					</td>
 				</tr>
@@ -139,6 +154,30 @@
 	</div>
 </div>
 @endforeach
+
+{{-- FIN MODAL EDITAR  --}}
+
+{{-- INICIO MODAL DIAGNOSTICOS  --}}
+
+
+<div class="modal fade" id="moda2-{{ $alumno->id }}">
+	<div class="modal-dialog">
+		<div class="modal-content bg-purple">
+			<div class="modal-header">
+				<h4 class="modal-title">Diagnosticos alumno/a {{ $alumno->nombres }} {{ $alumno->apellidos }}</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="card-body">		
+				</div>        
+				<div class="card card-footer">
+				<a href="{{ route('profesor.nuevoDiagnostico',$alumno->id) }}" class="btn btn-success">Nuevo Diagnostico</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 @endsection

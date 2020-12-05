@@ -31,4 +31,8 @@ class Alumnos extends Authenticatable
 	{
 		return $this->hasMany('App\Models\ResultadoEvaluacion');
 	}
+	public function diagnosticos(){
+
+		return $this->hasMany('App\Models\Diagnosticos');
+	}
 }

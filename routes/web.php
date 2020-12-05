@@ -63,6 +63,12 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('/editar','ProfesorController@editar')->name('editar');
 		Route::post('/editar/perfil/','ProfesorController@editarPerfil')->name('editarPerfil');
 		/* ########## PERFIL ########## */
+
+		/* ########## DIAGNOSTICO ########## */
+
+		Route::get('/diagnostico/nuevo/{id}', 'ProfesorController@nuevoDiagnostico')->name('nuevoDiagnostico');
+		Route::post('/diagnostico/nuevo','ProfesorController@diagnostico')->name('diagnostico');
+		/* ########## DIAGNOSTICO ########## */
 	});
 });
 
