@@ -220,10 +220,38 @@ class ProfesorController extends Controller
 	{
 		$alumnos = Alumnos::where('profesores_id', Auth()->user()->id)->get();
 		$actividades = Actividades::where('profesores_id', Auth()->user()->id)->get();
+		$categorias = Categorias::all();
+		$subcategorias = Subcategorias::all();
+		$niveles= Niveles::all();
+
 		return view('profesores.ver.actividad')
 		->with('alumnos',$alumnos)
+		->with('categorias',$categorias)
+		->with('subcategorias',$subcategorias)
+		->with('niveles',$niveles)
 		->with('actividades',$actividades);
 
+	}
+	public function editarActividad(Request $request, Actividades $actividad){
+
+		
+		
+		$validacion = request()->validate([
+			'nombre' => 'required|string',
+			'categorias' =>'required',
+			'subcategorias' => 'required',
+			'nivel' => 'required'
+		]);
+
+		$actividad = Actividades::find($actividad->id);
+		$actividad->nombre = $validacion['nombre'];
+		$actividad->subcategorias_id = $validacion['subcategorias'];
+		$actividad->niveles_id = $validacion['nivel'];
+		$actividad->profesores_id = auth('profesores')->user()->id;
+		$actividad->save();
+
+		return back()
+		->with('flash','La actividad a sido editada exitosamente');
 	}
 	public function asignarActividad(Actividades $id)
 	{	
