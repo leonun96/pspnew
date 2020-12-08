@@ -13,36 +13,37 @@
 	<div class="card-header">
 		<h3 class="card-title">Agregar preguntas a la actividad "{{ $actividad->nombre }}"</h3>
 	</div>
-	<form method="POST" action="{{ route('profesor.nuevaPregunta', $actividad->id ) }}" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('profesor.nuevaPregunta', $actividad->id) }}" enctype="multipart/form-data">
 		@csrf
+		@method('PUT')
 		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-3">
 					<label for="actividad"> NºActividad</label>
-					<input type="text" class="form-control" name="actividad" value="{{ $actividad->id}}">
+					<input type="text" class="form-control" name="actividad" value="{{ $actividad->id}}" readonly disabled>
 				</div>
 				<div class="form-group col-3">
 					<label for="categoria">Categoria</label>
-					<input type="text" class="form-control" name="categoria" value="{{ $actividad->subcategorias->categorias->nombre}}" >
+					<input type="text" class="form-control" name="categoria" value="{{ $actividad->subcategorias->categorias->nombre}}"readonly disabled >
 				</div>
 				<div class="form-group col-3">
 					<label for="subcategoria">Sub-Categoria</label>
-					<input type="text" class="form-control" name="subcategoria" value="{{ $actividad->subcategorias->nombre}}" >
+					<input type="text" class="form-control" name="subcategoria" value="{{ $actividad->subcategorias->nombre}}"readonly disabled >
 				</div>
 				<div class="form-group col-3">
 					<label for="pregunta">Nivel</label>
-					<input type="text" class="form-control" name="nivel" value="{{ $actividad->niveles->nivel }}" >
+					<input type="text" class="form-control" name="nivel" value="{{ $actividad->niveles->nivel }}" readonly disabled>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="pregunta">Pregunta</label>
-				<input type="text" class="form-control" name="pregunta" >
+				<input type="text" class="form-control" name="pregunta" value="{{ old('pregunta') }}">
 			</div>
-			<div class="form-group">
+			{{-- <div class="form-group">
 				<label for="imagen">Seleccione imagen de referencia (Opcional)</label>
 				<input type="file" name="imagen" >
-			</div>
+			</div> --}}
 			<div class="form-group">
 				<label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i>Respuesta Correcta</label>
 				<input type="text" class="form-control is-valid" id="inputSuccess" name="correcta">

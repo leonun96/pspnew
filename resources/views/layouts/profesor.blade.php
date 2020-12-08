@@ -83,18 +83,18 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link {{-- active --}}">
+					<li class="nav-item has-treeview menu-{{ Request::is('profesor/documento*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('profesor/documento*') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-file"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('profesor.subirDoc') }}" class="nav-link ">
+								<a href="{{ route('profesor.subirDoc') }}" class="nav-link {{ Request::is('profesor/documento') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Subir documento</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ route('profesor.verDoc') }}" class="nav-link ">
+								<a href="{{ route('profesor.verDoc') }}" class="nav-link {{ Request::is('profesor/documento/ver') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Ver Documentos</p>
 								</a>
 							</li>
@@ -151,16 +151,9 @@
 		</div>
 		<!-- /.content-header -->
 		<!-- BODY DONDE IRA CONTENIDO -->
-		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
-					@yield('contenido')
-				</div><!--fin row-->
-			</div>
-		</div>
 		@include('flash::message')
 		@if ($errors->any())
-		<div class="alert alert-danger">
+		<div class="alert alert-danger m-2">
 			<ul>
 				@foreach ($errors->all() as $error)
 				<li>{{ $error }}</li>
@@ -168,6 +161,13 @@
 			</ul>
 		</div>
 		@endif
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					@yield('contenido')
+				</div><!--fin row-->
+			</div>
+		</div>
 		<!-- /.content -->
 	</div>
 <!-- /.content-wrapper -->

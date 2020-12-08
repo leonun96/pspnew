@@ -1,63 +1,49 @@
-
-	
 @extends('layouts.profesor')
 @section('titulo','Crear Actividad')
 @section('direccion', 'Crear nueva actividad')
-
-
 @section('contenido')
 		
 
 <div class="card card-purple col-12">
-
-			<div class="card-header">
-				<h3 class="card-title">Crear nueva actividad</h3>
+	<div class="card-header">
+		<h3 class="card-title">Crear nueva actividad</h3>
+	</div>
+	<form action="{{ route('profesor.nuevaActividad') }}" method="POST">
+		@csrf
+		<div class="card-body">
+			<div class="form-group">
+				<label for="nombre">Nombre de la actividad</label>
+				<input type="text" class="form-control" name="nombre" >
 			</div>
-							<!-- /.card-header -->
-							<!-- form start -->
-			<form action="{{ route('profesor.nuevaActividad') }}" method="POST">
-				
-				{{ csrf_field() }}
-				<div class="card-body">
-					<div class="form-group">
-						<label for="nombre">Nombre de la actividad</label>
-						<input type="text" class="form-control" name="nombre" >
-					</div>
-					<div class="form-group">
-						<label for="categorias">Categoria</label>
-						<select name="categorias" class="form-control" id="categorias">
-							<option value="">Selecione una categoria</option>
-							@foreach ($categorias as $categoria)
-							<option value="{{ $categoria->id }}">{{ $categoria->COD }} - {{ $categoria->nombre }} </option>
-							@endforeach
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="subcategorias">Subcategoria</label>
-						<select name="subcategorias" class="form-control" id="subcategorias">
-							<option value=""></option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="niveles">Nivel</label>
-						<select name="niveles" class="form-control" id="niveles">
-							@foreach ($niveles as $nivel)
-							<option value="{{ $nivel->id }}">{{ $nivel->COD }} - {{ $nivel->nivel }} </option>
-							@endforeach
-						</select>
-					</div>
-				</div>
-								<!-- /.card-body -->
-				<div class="card card-footer">
-					<button type="submit" class="btn btn-success">Siguiente paso</button>
-				</div>
-
-			</form>
+			<div class="form-group">
+				<label for="categorias">Categoria</label>
+				<select name="categorias" class="form-control" id="categorias">
+					<option value="">Selecione una categoria</option>
+					@foreach ($categorias as $categoria)
+					<option value="{{ $categoria->id }}">{{ $categoria->COD }} - {{ $categoria->nombre }} </option>
+					@endforeach
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="subcategorias">Subcategoria</label>
+				<select name="subcategorias" class="form-control" id="subcategorias">
+					<option value=""></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="niveles">Nivel</label>
+				<select name="niveles" class="form-control" id="niveles">
+					@foreach ($niveles as $nivel)
+					<option value="{{ $nivel->id }}">{{ $nivel->COD }} - {{ $nivel->nivel }} </option>
+					@endforeach
+				</select>
+			</div>
 		</div>
-						<!-- /.card -->
-
+		<div class="card card-footer">
+			<button type="submit" class="btn btn-success">Siguiente paso</button>
+		</div>
+	</form>
 </div>
-
 @endsection
 
 @section('scripts')

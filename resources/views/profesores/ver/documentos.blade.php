@@ -11,14 +11,14 @@
 		<h3 class="card-title">Listado de documentos</h3>
 	</div>
 
-	@if(session()->has('flash'))
+	{{-- @if(session()->has('flash'))
 	<br>
 	<div class="container">
 		<div class="alert alert-success">
 			{{ session('flash') }}
 		</div>
 	</div>
-	@endif
+	@endif --}}
 
 	<div class="row">
 		<div class="card-body">
@@ -49,7 +49,7 @@
 </div>
 
 
-
+@foreach ($documentos as $doc)
 <div class="modal fade" id="modal-{{$doc->id}}">
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
@@ -81,6 +81,7 @@
 		</div>
 	</div>
 </div>
+@endforeach
 
 
 

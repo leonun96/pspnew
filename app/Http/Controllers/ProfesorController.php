@@ -166,7 +166,15 @@ class ProfesorController extends Controller
 
 	public function nuevaPregunta(Request $request, $actividad)
 	{
-		
+		$val =  $request->validate([
+			'pregunta' => ['required','string','max:255'],
+			'correcta' => ['required','string','max:255'],
+			'incorrecta1' => ['required','string','max:255'],
+		],[
+			'pregunta.required' => 'Debe ingresar la pregunta',
+			'correcta.required' => 'Debe ingresar la respuesta correcta',
+			'incorrecta1.required' => 'Debe ingresar al menos una respuesta incorrecta',
+		]);
 		if($request->hasfile('imagen')){
 			$file = $request->file('imagen');
 			$nombre = time().$file->getClientOriginalName();
@@ -178,7 +186,7 @@ class ProfesorController extends Controller
 		$pregunta = new Preguntas;
 		$pregunta->pregunta = $request->pregunta;
 		$pregunta->imagen= $nombre;
-		$pregunta->actividades_id = $request->actividad;
+		$pregunta->actividades_id = $actividad;
 		$pregunta->save();
 		
 		$respuestas= new Respuestas;
