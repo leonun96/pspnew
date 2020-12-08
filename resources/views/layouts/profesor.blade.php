@@ -100,10 +100,27 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-close">
-					<a href="{{ route('profesor.editar')}}" class="nav-link {{-- active --}}">
-							<i class="nav-icon fas fa-user"></i><p>Perfil</p>
+					<li class="nav-item has-treeview menu-{{ Request::is('profesor/editar') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('profesor/editar') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-user"></i><p>Perfil</p><i class="fas fa-angle-left right"></i>
 						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{ route('profesor.editar')}}" class="nav-link {{ Request::is('profesor/editar') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Editar datos</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Cambiar contraseña</p>
+								</a>
+							</li>
+							{{-- <li class="nav-item">
+								<a href="#" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Foto de perfil</p>
+								</a>
+							</li> --}}
+						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
 						<a href="{{ route('profesor.logout') }}" class="nav-link {{-- active --}}">
