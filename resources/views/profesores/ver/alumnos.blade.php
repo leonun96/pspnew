@@ -159,7 +159,7 @@
 
 {{-- INICIO MODAL DIAGNOSTICOS  --}}
 
-
+@foreach ($alumnos as $alumno)
 <div class="modal fade" id="moda2-{{ $alumno->id }}">
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
@@ -171,7 +171,6 @@
 			<div class="modal-body">
 				<div class="card-body">
 					@php
-
 					$diagnosticos = DB::table('diagnosticos')
 					->where('alumnos_id',$alumno->id)
 					->get();
@@ -189,7 +188,7 @@
 		</div>
 	</div>
 </div>
-
+@endforeach
 
 @endsection
 

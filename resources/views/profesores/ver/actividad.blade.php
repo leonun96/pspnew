@@ -61,7 +61,7 @@
 	</div>
 </div>
 
-
+@foreach ($actividades as $act)
 <div class="modal fade" id="modal-{{ $act->id }}">
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
@@ -106,7 +106,7 @@
 		</div>
 	</div>
 </div>
-
+@endforeach
 
 @endsection
 
