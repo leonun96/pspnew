@@ -43,13 +43,15 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		/* ########## GESTION DE ALUMNO ########## */
 
 		/* ########## ACTIVIDAD ########## */
-		Route::get('/agregar-actividad','ProfesorController@agregarActividad')->name('agregarActividad');
-		Route::post('/nueva-actividad','ProfesorController@nuevaActividad')->name('nuevaActividad');
-		Route::get('/agregar-preguntas/{actividad}','ProfesorController@agregarPreguntas')->name('agregarPreguntas');
-		Route::put('/nueva-pregunta/{actividad}','ProfesorController@nuevaPregunta')->name('nuevaPregunta');
-		Route::get('/ver-actividades', 'ProfesorController@verActividades')->name('verActividades');
-		Route::get('/actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
-		Route::put('/actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
+		Route::group(['prefix' => 'actividad'], function() {
+			Route::get('create','ProfesorController@agregarActividad')->name('agregarActividad');
+			Route::post('store','ProfesorController@nuevaActividad')->name('nuevaActividad');
+			Route::get('preguntas/{actividad}','ProfesorController@agregarPreguntas')->name('agregarPreguntas');
+			Route::put('pregunta/{actividad}/store','ProfesorController@nuevaPregunta')->name('nuevaPregunta');
+			Route::get('/', 'ProfesorController@verActividades')->name('verActividades');
+			Route::get('actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
+			Route::put('actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
+		});
 		/* ########## ACTIVIDAD ########## */
 		
 		/* ########## DOCUMENTOS ########## */
