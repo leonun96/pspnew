@@ -76,10 +76,10 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 	/* RUTAS PARA EL ALUMNO LOGIN */
 	Route::get('/', 'LogInController@accesoAlumnos')->name('accesoAlumno');
 	Route::post('/login', 'LogInController@loginAlumnos')->name('loginAlumno');
-	Route::get('logout', 'LogInController@logoutA')->name('logout');
 
 	Route::group(['middleware' => ['auth:alumno']], function() {
 		/* ##### Rutas que requieren autenticación ##### */
+		Route::get('logout', 'LogInController@logoutA')->name('logout');
 		Route::get('/menu', 'AlumnosController@menuPrincipal')->name('menu');
 
 		/* ########## ACTIVIDAD ########## */
