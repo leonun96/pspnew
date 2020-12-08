@@ -164,12 +164,23 @@
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
 			<div class="modal-header">
-				<h4 class="modal-title">Diagnosticos alumno/a {{ $alumno->nombres }} {{ $alumno->apellidos }}</h4>
+				<h4 class="modal-title">Historial de Diagnosticos de: {{ $alumno->nombres }} {{ $alumno->apellidos }}</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span></button>
 			</div>
 			<div class="modal-body">
-				<div class="card-body">		
+				<div class="card-body">
+					@php
+
+					$diagnosticos = DB::table('diagnosticos')
+					->where('alumnos_id',$alumno->id)
+					->get();
+
+					@endphp
+
+					@foreach ($diagnosticos as $diagnostico)
+					<p>{!! $diagnostico->diagnostico !!}</p>
+					@endforeach
 				</div>        
 				<div class="card card-footer">
 				<a href="{{ route('profesor.nuevoDiagnostico',$alumno->id) }}" class="btn btn-success">Nuevo Diagnostico</a>
