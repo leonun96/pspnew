@@ -49,7 +49,7 @@
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- ESTO ES EL SIDEBARD DEL LADO IZQUIERO DE LA PANTALLA !! -->
 					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link active">
+						<a href="#" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-user"></i><p>Gestion de alumnos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
@@ -67,7 +67,7 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link active">
+						<a href="#" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-edit"></i><p>Actividades<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
@@ -84,7 +84,7 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link active">
+						<a href="#" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-file"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
@@ -101,12 +101,12 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-					<a href="{{ route('profesor.editar')}}" class="nav-link active">
+					<a href="{{ route('profesor.editar')}}" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-user"></i><p>Perfil</p>
 						</a>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-						<a href="{{ route('profesor.logout') }}" class="nav-link active">
+						<a href="{{ route('profesor.logout') }}" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-sign-out-alt"></i><p>Cerrar Sesion</p>
 						</a>
 					</li>	

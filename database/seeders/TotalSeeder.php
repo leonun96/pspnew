@@ -19,13 +19,18 @@ class TotalSeeder extends Seeder
 	 */
 	public function run()
 	{
+		User::create([
+			'name' => 'admin',
+			'email' => 'admin@psp.cl',
+			'password' => bcrypt('1q2w3e4r'),
+		]);
 		Profesores::create([
 			'rut' => '11111111-1',
 			'nombres' => 'Profesor',
 			'apellidos' => 'Zúñiga',
 			'fnac' => '1970-02-02',
 			'telefono' => '123123123',
-			'email' => 'profesor@test.com',
+			'email' => 'profesor@psp.cl',
 			'password' => bcrypt('123123')
 		]);
 		Alumnos::create([
@@ -34,7 +39,7 @@ class TotalSeeder extends Seeder
 			'apellidos' => 'Nuñez',
 			'fnac' => '1970-02-02',
 			'telefono' => '123123123',
-			'email' => 'a@a',
+			'email' => 'user@psp.cl',
 			'profesores_id' => 1,
 			'NEE' => 'permanente',
 			'password' => bcrypt('123123')
