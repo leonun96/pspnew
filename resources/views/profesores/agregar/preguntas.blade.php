@@ -88,19 +88,29 @@
 							<span aria-hidden="true">&times;</span></button>
 						</div>
 						<div class="modal-body">
-							
-							@foreach ($pregunta->respuestas as $res)
-							<div class="row">
-								<p>ALTERNATIVA: {{ $res->respuesta }}  
-									@if ($res->correcta == 'si')
-										<i class="fa fa-check bg-success" aria-hidden="true"></i>
-									@else
-										<i class="fa fa-times bg-danger" aria-hidden="true"></i>
-									@endif  
-								</p>
-							</div>
-							@endforeach
-							
+								@foreach ($pregunta->respuestas as $res)
+								<form action="{{ Route('profesor.editarRespuesta', $pregunta->id) }}" method="POST">
+								@csrf
+								@method('PUT')
+								<div class="row">
+									<div class="form-group col-12">
+										<label for="respuesta">Respuesta</label>
+									<input 
+										type="text" 
+										name="respuesta[{{$res->id}}]" 
+										id="respuesta" 
+										class="form-control {{ $res->correcta == 'si' ? 'is-valid' : 'is-invalid'}}"
+										value="{{ $res->respuesta }}">
+									</div>
+								</div>
+								@endforeach
+								<div class="row justify-content-center">
+									<div class="form-group">
+										<button class="btn btn-success" type="submit">Editar</button>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
+									</div>
+								</div>	
+							</form>						
 						</div>
 					  </div>
 					</div>

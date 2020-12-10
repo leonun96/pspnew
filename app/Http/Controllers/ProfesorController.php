@@ -215,6 +215,21 @@ class ProfesorController extends Controller
 
 		return back();
 	}
+	public function editarRespuesta(Request $request, Preguntas $id)
+	{
+		$pregunta = $id;
+		// dump($request->respuesta);
+		foreach ($request->respuesta as $id => $valor) {
+			//  dump($id, $valor);
+			$respuesta= Respuestas::find($id);
+			$respuesta->preguntas_id = $pregunta->id;
+			$respuesta->respuesta = $valor;
+			$respuesta->save();
+		}
+
+		return back()
+			->with('flash','La actividad a sido editada exitosamente');
+	}
 	
 	public function verActividades()
 	{
