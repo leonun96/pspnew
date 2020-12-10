@@ -230,6 +230,21 @@ class ProfesorController extends Controller
 		return back()
 			->with('flash','La actividad a sido editada exitosamente');
 	}
+	public function editarPreguntas(Request $request, Actividades $actividad)
+	{
+		// dump($request,$actividad);
+		$idActividad = $actividad->id;
+		foreach($request->pregunta as $idPregunta => $valor){
+			// dump($idPregunta, $valor);
+			$pregunta = Preguntas::find($idPregunta);
+			$pregunta->pregunta = $valor;
+			$pregunta->actividades_id = $idActividad;
+			$pregunta->save();
+		}
+		
+		return back()
+			->with('flash','Las preguntas han sido editadas exitosamente');
+	}
 	
 	public function verActividades()
 	{

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 			Route::put('actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');
 			Route::put('/editar/{actividad}','ProfesorController@editarActividad')->name('editarActividad');
 			Route::put('/editar/respuesta/{id}','ProfesorController@editarRespuesta')->name('editarRespuesta');
+			Route::put('/editar/pregunta/{actividad}','ProfesorController@editarPreguntas')->name('editarPreguntas');
 		});
 		/* ########## ACTIVIDAD ########## */
 		
