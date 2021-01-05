@@ -100,7 +100,7 @@
 						value="{{$alumno->nombres}} {{$alumno->apellidos}}" readonly>
 					</div>
 					@endforeach
-					<input type="submit" name="asignar">
+					<input type="submit" name="asignar" class="btn btn-success">
 				</form>
 			</div>
 		</div>
