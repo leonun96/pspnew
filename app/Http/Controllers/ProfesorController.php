@@ -19,9 +19,64 @@ use App\Models\Subcategorias;
 use App\Models\DocumentosAsignados;
 use App\Models\ActividadesAsignadas;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class ProfesorController extends Controller
 {
+	/* ########## PERFIL PROFESOR ########## */
+	public function editar()
+	{
+		$profesor = Profesores::where('id',auth('')->user()->id)->get();
+		return view('profesores.editar.perfil')->with('profesor',$profesor);
+	}
+
+	public function editarPerfil(Request $request)
+	{
+		$validacion = $request->validate([
+			'rut' => 'required',
+			'nombres' => 'required',
+			'apellidos'=> 'required',
+			'fnac' => 'required',
+			'telefono' => 'numeric|required',
+			'email' => 'email|required',
+		]);
+
+		$perfil = Profesores::where('id', Auth()->user()->id)->update([
+			'rut' =>$validacion['rut'],
+			'nombres' => $validacion['nombres'],
+			'apellidos'=> $validacion['apellidos'],
+			'fnac' =>$validacion['fnac'],
+			'telefono' => $validacion['telefono'],
+			'email' => $validacion['email'],
+		]);
+		
+		return back()
+		->with('flash','El perfil a sido editado exitosamente');
+	}
+	public function editarPass ()
+	{
+		return view('profesores.editar.pass');
+	}
+	public function cambiarPass (Request $request)
+	{
+		$val = $request->validate([
+			'password_old' => 'required',
+			'password' => 'required|confirmed|min:6',
+		],[
+			'password_old.required' => 'Ingrese su contraseña actual',
+			'password.required' => 'Ingrese la contraseña nueva',
+			'password.confirmed' => 'Confirme su contraseña nueva',
+			'password.min' => 'Largo minimo de 6 caracteres',
+		]);
+		if (Hash::check($request->password_old, auth('profesores')->user()->password)) {
+			Profesores::find(auth('profesores')->user()->id)->update([
+				'password' => bcrypt($val['password']),
+			]);
+		}
+		Flash::success('Contraseña cambiada exitosamente');
+		return redirect()->back();
+	}
+	/* ########## PERFIL PROFESOR ########## */
 	public function menuPrincipal()
 	{
 		$alumnos = Alumnos::all()->count();
@@ -348,46 +403,6 @@ class ProfesorController extends Controller
 	public function downloadDoc ($nombre)
 	{
 		return Storage::download($nombre);
-	}
-
-	public function editar()
-	{
-		$profesor = Profesores::where('id',auth('')->user()->id)->get();
-		return view('profesores.editar.perfil')->with('profesor',$profesor);
-	}
-
-	public function editarPerfil(Request $request ){
-		$validacion = $request->validate([
-			'rut' => 'required',
-			'nombres' => 'required',
-			'apellidos'=> 'required',
-			'fnac' => 'required',
-			'telefono' => 'numeric|required',
-			'email' => 'email|required',
-			'password' => 'required'
-		]);
-		
-			// if para el cambio de contraseña sea opcional
-		if($validacion['password'] != null){
-			$validacion['password'] = bcrypt($validacion['password']);
-		}else{
-			// unset saca el campo password del array a editar
-			unset($validacion['password']);
-		}
-
-		$perfil = Profesores::where('id', Auth()->user()->id)
-		->update([
-			'rut' =>$validacion['rut'],
-			'nombres' => $validacion['nombres'],
-			'apellidos'=> $validacion['apellidos'],
-			'fnac' =>$validacion['fnac'],
-			'telefono' => $validacion['telefono'],
-			'email' => $validacion['email'],
-			'password' => $validacion['password']
-		]);
-		
-		return back()
-		->with('flash','El perfil a sido editado exitosamente');
 	}
 
 	public function nuevoDiagnostico($id)

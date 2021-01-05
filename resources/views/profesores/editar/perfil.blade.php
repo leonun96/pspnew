@@ -65,11 +65,11 @@
 				<input type="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : ''}}" 
 				name="email"  placeholder="Ingrese email del alumno" value="{{ $profe->email }}">
 			</div>
-			<div class="form-group">
+			{{-- <div class="form-group">
 				<label for="email">Contraseña</label>
 				<input type="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : ''}}" 
 				name="password">
-			</div>
+			</div> --}}
 		</div>
 								
 		<div class="card card-footer">

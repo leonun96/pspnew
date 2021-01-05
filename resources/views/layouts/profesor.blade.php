@@ -100,7 +100,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-{{ Request::is('profesor/editar') ? 'open' : 'close' }}">
+					<li class="nav-item has-treeview menu-{{ Request::is('profesor/editar*') ? 'open' : 'close' }}">
 						<a href="#" class="nav-link {{ Request::is('profesor/editar') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-user"></i><p>Perfil</p><i class="fas fa-angle-left right"></i>
 						</a>
@@ -111,7 +111,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="#" class="nav-link ">
+								<a href="{{ route('profesor.editar.pass') }}" class="nav-link {{ Request::is('profesor/editar/pass') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Cambiar contraseña</p>
 								</a>
 							</li>
