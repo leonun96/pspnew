@@ -175,6 +175,7 @@
 					</div>
 					<div class="card card-footer">
 						<button type="submit" class="btn btn-success boton" name="">Editar actividad</button>
+					<a href="{{ Route('profesor.agregarPreguntas', $act->id ) }}" class="btn btn-success mt-2">Editar preguntas</a>
 					</div>
 				</div>
 			</form>

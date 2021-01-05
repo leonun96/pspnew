@@ -2,12 +2,17 @@
 @section('titulo','Agregar Preguntas')
 @section('direccion', 'Agregar preguntas a actividad')
 
+@section('estilos')
+@endsection
+
 @section('contenido')
 
 @foreach ($actividad as $actividades)
 @endforeach
 
+<style>
 
+</style>
 
 <div class="card card-purple col-6">
 	<div class="card-header">
@@ -72,47 +77,77 @@
 	<div class="card-header">
 		<h3 class="card-title">Previsualización "{{ $actividad->nombre }}"</h3>
 	</div>
-	
-	<div class="card card-body">
-		@foreach ($actividad->preguntas as $pregunta)
-			<h2>{{ $pregunta->pregunta }}</h2>
-			<button type="button" class="btn btn-block btn-outline-secondary" data-toggle="modal" data-target="#moda-{{ $pregunta->id }}">
-				Respuestas
-			</button>
-				<div class="modal fade" id="moda-{{ $pregunta->id }}">
-					<div class="modal-dialog">
-					  <div class="modal-content bg-purple">
-						<div class="modal-header">
-						  <h4 class="modal-title">{{ $pregunta->pregunta }}</h4>
-						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span></button>
-						</div>
-						<div class="modal-body">
-							
-							@foreach ($pregunta->respuestas as $res)
-							<div class="row">
-								<p>ALTERNATIVA: {{ $res->respuesta }}  
-									@if ($res->correcta == 'si')
-										<i class="fa fa-check bg-success" aria-hidden="true"></i>
-									@else
-										<i class="fa fa-times bg-danger" aria-hidden="true"></i>
-									@endif  
-								</p>
-							</div>
-							@endforeach
-							
-						</div>
-					  </div>
-					</div>
-				</div>
 
-		@endforeach
+	<div class="card card-body">
+	<form action="{{ route('profesor.editarPreguntas',$actividad->id) }}" method="POST">
+			@csrf
+			@method('PUT')
+			@foreach ($actividad->preguntas as $pregunta)
+			<div class="row">
+				<div class="col">
+					<label for="pregunta" class="mt-2">Pregunta</label>
+					<input type="text" id="pregunta" name="pregunta[{{ $pregunta->id }}]" class="form-control mb-2 border-0" value="{{ $pregunta->pregunta }}">
+				</div>
+				<button type="button" class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#moda-{{ $pregunta->id }}">
+					Editar Respuestas
+				</button>
+			</div>
+			@endforeach
+			<div class="row mt-2">
+				<button type="submit" class="btn btn-outline-secondary mt-3 btn-block">Editar Preguntas</button>
+			</div>
+		</form>
 	</div>
+
 	<div class="card card-footer">
 		<a href="{{ route('profesor.menu') }}" class="btn btn-success">Finalizar actividad</a>
 	</div>
 	
 </div>
+
+
+
+
+@foreach ($actividad->preguntas as $pregunta)
+{{-- MODAL RESPUESTAS --}}
+<div class="modal fade" id="moda-{{ $pregunta->id }}">
+	<div class="modal-dialog">
+	  <div class="modal-content bg-purple">
+		<div class="modal-header">
+		  <h4 class="modal-title">{{ $pregunta->pregunta }}</h4>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span></button>
+		</div>
+		<div class="modal-body">
+				@foreach ($pregunta->respuestas as $res)
+				<form action="{{ Route('profesor.editarRespuesta', $pregunta->id) }}" method="POST">
+				@csrf
+				@method('PUT')
+				<div class="row">
+					<div class="form-group col-12">
+						<label for="respuesta">Respuesta</label>
+					<input 
+						type="text" 
+						name="respuesta[{{$res->id}}]" 
+						id="respuesta" 
+						class="form-control {{ $res->correcta == 'si' ? 'is-valid' : 'is-invalid'}}"
+						value="{{ $res->respuesta }}">
+					</div>
+				</div>
+				@endforeach
+				<div class="row justify-content-center">
+					<div class="form-group">
+						<button class="btn btn-success" type="submit">Editar</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
+					</div>
+				</div>	
+			</form>						
+		</div>
+	  </div>
+	</div>
+</div>
+@endforeach
+{{-- FIN MODAL  RESPUESTAS--}}
 
 @endsection
 
