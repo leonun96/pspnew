@@ -82,8 +82,8 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href=" {{ route('profesor.verActividades') }}" class="nav-link {{ Request::is('profesor/actividad') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Actividades realizadas</p>
+								<a href=" {{ route('profesor.verActRealizadas') }}" class="nav-link {{ Request::is('profesor/actividad/realizadas') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Actividad Realizadas</p>
 								</a>
 							</li>
 						</ul>

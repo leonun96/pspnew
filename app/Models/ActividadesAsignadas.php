@@ -20,13 +20,14 @@ class ActividadesAsignadas extends Model
 	{
 		return $this->belongsTo('App\Models\Profesores');
 	}
-	public function actividadesAsignadas()
+	public function alumnos()
 	{
 		return $this->belongsTo('App\Models\Alumnos');
 	}
 	public function resultados ()
 	{
-		return $this->hasMany('App\Models\ResultadoEvaluacion');
+		return $this->hasOne('App\Models\ResultadoEvaluacion');
 	}
+	
 }
 

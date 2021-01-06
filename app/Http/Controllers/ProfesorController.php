@@ -367,6 +367,13 @@ class ProfesorController extends Controller
 		->with('flash','La actividad se asigno correctamente');
 
 	}
+	public function verActRealizadas()
+	{
+		$finalizadas = ActividadesAsignadas::with(['actividades','profesores','alumnos','resultados',])
+		->where('estado','FINALIZADO')->get();
+		dd($finalizadas);
+		return view('profesores.ver.realizadas');
+	}
 
 	public function subirDoc()
 	{
