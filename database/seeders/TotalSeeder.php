@@ -9,6 +9,7 @@ use App\Models\Profesores;
 use App\Models\Alumnos;
 use App\Models\Categorias;
 use App\Models\Subcategorias;
+use Illuminate\Support\Str;
 
 class TotalSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class TotalSeeder extends Seeder
 			'name' => 'admin',
 			'email' => 'admin@psp.cl',
 			'password' => bcrypt('1q2w3e4r'),
+			'api_token' => Str::random(70),
 		]);
 		Profesores::create([
 			'rut' => '11111111-1',
@@ -31,7 +33,8 @@ class TotalSeeder extends Seeder
 			'fnac' => '1970-02-02',
 			'telefono' => '123123123',
 			'email' => 'profesor@psp.cl',
-			'password' => bcrypt('123123')
+			'password' => bcrypt('123123'),
+			'api_token' => Str::random(70),
 		]);
 		Alumnos::create([
 			'rut' => '22222222-2',
@@ -42,7 +45,8 @@ class TotalSeeder extends Seeder
 			'email' => 'user@psp.cl',
 			'profesores_id' => 1,
 			'NEE' => 'permanente',
-			'password' => bcrypt('123123')
+			'password' => bcrypt('123123'),
+			'api_token' => Str::random(70),
 		]);
 		Categorias::create([
 			'COD' => 'MAT',
