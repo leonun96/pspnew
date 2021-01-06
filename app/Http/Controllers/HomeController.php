@@ -29,4 +29,8 @@ class HomeController extends Controller
 	{
 		Artisan::call('migrate:fresh --seed');
 	}
+	public function rutas ()
+	{
+		dd('en desarrollo');
+	}
 }

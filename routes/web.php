@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 // 	return view('welcome');
 // });
 
+/* #################### TEST #################### */
 // Route::get('artisan/test', 'HomeController@artisan');
+Route::get('rutas/test', 'HomeController@rutas');
+/* #################### TEST #################### */
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return view('dashboard');
