@@ -18,6 +18,8 @@ use Illuminate\Http\Request;
 use App\Models\Subcategorias;
 use App\Models\DocumentosAsignados;
 use App\Models\ActividadesAsignadas;
+use App\Models\ResultadoDetalle;
+use App\Models\ResultadoEvaluacion;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 
@@ -369,10 +371,37 @@ class ProfesorController extends Controller
 	}
 	public function verActRealizadas()
 	{
-		$finalizadas = ActividadesAsignadas::with(['actividades','profesores','alumnos','resultados',])
+		$finalizadas = ActividadesAsignadas::with(['actividades','profesores','alumnos','resultados','resultados.detalle'])
 		->where('estado','FINALIZADO')->get();
-		dd($finalizadas);
-		return view('profesores.ver.realizadas');
+		// dd($finalizadas);
+		//  foreach ($finalizadas as $fin){
+		//  	//  dump($fin->estado.' '.$fin->alumnos->nombres.' '.$fin->actividades->nombre);
+		//  	 foreach($fin->resultados->detalle as $detalle){
+		// 		dump($detalle);
+		// 		dump($detalle->preguntas);
+		// 		dump($detalle->respuestas);
+		//  	 }
+		//   }
+		  return view('profesores.ver.realizadas')
+		  ->with('finalizadas',$finalizadas);
+	}
+
+	public function crearNota(ResultadoEvaluacion $actividad){
+		
+		
+		$datos = request()->validate([
+			'puntaje' => 'required',
+			'nota' => 'required',
+		]);
+
+		$resultado = ResultadoEvaluacion::find($actividad->id);
+		$resultado->puntaje = $datos['puntaje'];
+		$resultado->nota = $datos['nota'];
+		$resultado->save();
+		
+		return back()
+		->with('flash','La actividad se evaluo correctamente');;
+
 	}
 
 	public function subirDoc()
