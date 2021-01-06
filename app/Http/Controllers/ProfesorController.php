@@ -22,6 +22,7 @@ use App\Models\ResultadoDetalle;
 use App\Models\ResultadoEvaluacion;
 use Illuminate\Support\Facades\Auth;
 use Hash;
+use Illuminate\Support\Str;
 
 class ProfesorController extends Controller
 {
@@ -129,6 +130,7 @@ class ProfesorController extends Controller
 		$alumno->email = $request->email;
 		$alumno->password = $pass;
 		$alumno->NEE = $request->diagnostico;
+		$alumno->api_token = Str::random(70);
 		$alumno->profesores_id = auth('profesores')->user()->id;
 
 		$alumno->save();
