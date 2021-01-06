@@ -81,6 +81,11 @@
 									<i class="far fa-circle nav-icon"></i><p>Visualizar actividades</p>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a href=" {{ route('profesor.verActividades') }}" class="nav-link {{ Request::is('profesor/actividad') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Actividades realizadas</p>
+								</a>
+							</li>
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-{{ Request::is('profesor/documento*') ? 'open' : 'close' }}">

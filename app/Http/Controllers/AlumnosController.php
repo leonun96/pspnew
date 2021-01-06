@@ -63,7 +63,6 @@ class AlumnosController extends Controller
 				->first();
 			ResultadoEvaluacion::create([
 				'actividades_asignadas_id' => $asig->id,
-				'alumnos_id' => auth('alumno')->user()->id,
 				'puntaje' => 0,
 				'nota' => 1.0,
 			]);
@@ -77,7 +76,6 @@ class AlumnosController extends Controller
 				->first();
 			$total = ResultadoEvaluacion::updateOrCreate([
 				'actividades_asignadas_id' => $asig->id,
-				'alumnos_id' => auth('alumno')->user()->id,
 				'puntaje' => null,
 				'nota' => null,
 			]);
