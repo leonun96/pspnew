@@ -10,6 +10,11 @@ class ApiController extends Controller
 	{
 		// 
 	}
+	public function user (Request $request)
+	{
+		// Para obtener usuario
+		return $request->user();
+	}
 	public function login ()
 	{
 		// LOGIN CON LA API

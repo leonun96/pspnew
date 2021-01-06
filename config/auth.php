@@ -54,6 +54,11 @@ return [
 			'driver'  => 'session',
 			'provider' => 'alumno',
 		],
+        'alumno_api' => [
+            'driver' => 'token',
+            'provider' => 'alumno',
+            'hash' => false,
+        ],
     ],
 
     /*
