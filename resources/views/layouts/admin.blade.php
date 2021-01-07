@@ -50,18 +50,18 @@
 					<!-- ESTO ES EL SIDEBARD DEL LADO IZQUIERO DE LA PANTALLA !! -->
 					<li class="nav-item has-treeview menu-close">
 						<a href="#" class="nav-link {{-- active --}}">
-							<i class="nav-icon fas fa-user"></i><p>Gestion de alumnos<i class="fas fa-angle-left right"></i></p>
+							<i class="nav-icon fas fa-user"></i><p>Gestion de profesores<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('profesor.agregarAlumno') }}" class="nav-link ">
-									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
+								<a href="{{ route('admin.agregarProfesor') }}" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Agregar profesor</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ route('profesor.verAlumnos') }}" class="nav-link ">
+								<a href="" class="nav-link ">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Visualizar alumnos</p>
+									<p>Visualizar profesores</p>
 								</a>
 							</li>
 						</ul>

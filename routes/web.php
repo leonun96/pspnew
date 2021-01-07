@@ -21,9 +21,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('artisan/test', 'HomeController@artisan');
 Route::get('rutas/test', 'HomeController@rutas');
 /* #################### TEST #################### */
+
 /* #################### ADMIN #################### */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum', 'as' => 'admin.'], function() {
 	Route::get('/', 'AdminController@index')->name('index');
+
+	Route::get('/agregar-profesor','AdminController@agregarProfesor')->name('agregarProfesor');
+	Route::post('/nuevo-profesor','AdminController@nuevoProfesor')->name('nuevoProfesor');
+	
 });
 /* #################### ADMIN #################### */
 

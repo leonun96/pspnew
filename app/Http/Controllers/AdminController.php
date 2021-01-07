@@ -26,4 +26,32 @@ class AdminController extends Controller
 			'profesores' => $profesores,
 		]);
 	}
+	public function agregarProfesor(){
+		return view('admin.agregar.profesor');
+	}
+	public function nuevoProfesor(Request $request){
+		
+		$datos = $request->validate([
+			'rut' => 'required',
+			'nombres' => 'required',
+			'apellidos'=> 'required',
+			'fnac' => 'required',
+			'telefono' => 'required',
+			'email' => 'email|required',
+			'password' => 'required'
+		]);
+
+		$profesor = new Profesores;
+		$profesor->rut = $datos['rut'];
+		$profesor->nombres = $datos['nombres'];
+		$profesor->apellidos = $datos['apellidos'];
+		$profesor->fnac = $datos['fnac'];
+		$profesor->telefono = $datos['telefono'];
+		$profesor->email = $datos['email'];
+		$profesor->password = bcrypt($datos['password']);
+		$profesor->save();
+
+		return back()->with('alert-success','El profesor se a guardado exitosamente');
+
+	}
 }
