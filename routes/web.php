@@ -20,8 +20,12 @@ use Illuminate\Support\Facades\Route;
 /* #################### TEST #################### */
 // Route::get('artisan/test', 'HomeController@artisan');
 Route::get('rutas/test', 'HomeController@rutas');
-Route::get('rutas/user/api', 'HomeController@userApi');
 /* #################### TEST #################### */
+/* #################### ADMIN #################### */
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum', 'as' => 'admin.'], function() {
+	Route::get('/', 'AdminController@index')->name('index');
+});
+/* #################### ADMIN #################### */
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 	return view('dashboard');
