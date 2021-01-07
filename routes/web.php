@@ -50,7 +50,7 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 		Route::get('logout', 'LogInController@logoutP')->name('logout');
 		Route::get('/menu','ProfesorController@menuPrincipal')->name('menu');
 		/* ########## GESTION DE ALUMNO ########## */
-		Route::get('/agregar-alumno','ProfesorController@agregarAlumno')->name('agregarAlumno');
+		Route::get('/alumnos/agregar','ProfesorController@agregarAlumno')->name('agregarAlumno');
 		Route::post('/nuevo-alumno','ProfesorController@nuevoAlumno')->name('nuevoAlumno');
 		Route::get('/alumnos', 'ProfesorController@verAlumnos')->name('verAlumnos');
 		Route::delete('/eliminar-alumno/{id}', 'ProfesorController@eliminarAlumno')->name('eliminarAlumno');

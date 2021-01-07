@@ -48,7 +48,7 @@
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- ESTO ES EL SIDEBARD DEL LADO IZQUIERO DE LA PANTALLA !! -->
-					<li class="nav-item has-treeview menu-close">
+					<li class="nav-item has-treeview menu-{{ Request::is('admin/agregar-profesor') ? 'open' : 'close' }}">
 						<a href="#" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-user"></i><p>Gestion de profesores<i class="fas fa-angle-left right"></i></p>
 						</a>
@@ -62,28 +62,6 @@
 								<a href="" class="nav-link ">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Visualizar profesores</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview menu-{{ Request::is('profesor/actividad*') ? 'open' : 'close' }}">
-						<a href="#" class="nav-link {{ Request::is('profesor/actividad*') ? 'active' : '' }}">
-							<i class="nav-icon fas fa-edit"></i><p>Actividades<i class="fas fa-angle-left right"></i></p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="{{ route('profesor.agregarActividad') }}" class="nav-link {{ Request::is('profesor/actividad/create') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Crear actividad</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href=" {{ route('profesor.verActividades') }}" class="nav-link {{ Request::is('profesor/actividad') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Visualizar actividades</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href=" {{ route('profesor.verActRealizadas') }}" class="nav-link {{ Request::is('profesor/actividad/realizadas') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Actividad Realizadas</p>
 								</a>
 							</li>
 						</ul>

@@ -48,18 +48,18 @@
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- ESTO ES EL SIDEBARD DEL LADO IZQUIERO DE LA PANTALLA !! -->
-					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link {{-- active --}}">
+					<li class="nav-item has-treeview menu-{{ Request::is('profesor/alumnos*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('profesor/alumnos*') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-user"></i><p>Gestion de alumnos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('profesor.agregarAlumno') }}" class="nav-link ">
+								<a href="{{ route('profesor.agregarAlumno') }}" class="nav-link {{ Request::is('profesor/alumnos/agregar') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ route('profesor.verAlumnos') }}" class="nav-link ">
+								<a href="{{ route('profesor.verAlumnos') }}" class="nav-link {{ Request::is('profesor/alumnos') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Visualizar alumnos</p>
 								</a>
