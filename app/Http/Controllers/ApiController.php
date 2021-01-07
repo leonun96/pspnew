@@ -15,8 +15,9 @@ class ApiController extends Controller
 		// Para obtener usuario
 		return $request->user();
 	}
-	public function login ()
+	public function login (Request $request)
 	{
 		// LOGIN CON LA API
+		return response()->json('data' => 'Recibido!!', 'requset' => $request);
 	}
 }

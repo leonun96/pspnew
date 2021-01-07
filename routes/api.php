@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* ########## RUTA LOGIN PARA OBTENER TOKEN ########## */
+Route::post('login','ApiController@login');
 Route::get('/alumno','ApiController@user')->middleware('auth:alumno_api');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
