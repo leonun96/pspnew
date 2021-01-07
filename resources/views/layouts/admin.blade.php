@@ -67,9 +67,12 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-						<a href="{{ route('profesor.logout') }}" class="nav-link {{-- active --}}">
-							<i class="nav-icon fas fa-sign-out-alt"></i><p>Cerrar Sesion</p>
-						</a>
+						<form method="post" id="close_session" action="{{ route('logout') }}">
+							@csrf
+							<a href="#" onclick="return logoutJs()">
+								<i class="nav-icon fas fa-sign-out-alt"></i>Cerrar Sesion
+							</a>
+						</form>
 					</li>	
 				</ul>
 			</nav>
@@ -133,6 +136,9 @@
 @yield('scripts')
 <script>
 	$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+	function logoutJs () {
+		$("#close_session").submit();
+	}
 </script>
 
 </body>
