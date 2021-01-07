@@ -48,61 +48,22 @@
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- ESTO ES EL SIDEBARD DEL LADO IZQUIERO DE LA PANTALLA !! -->
-					<li class="nav-item has-treeview menu-{{ Request::is('admin/agregar-profesor') ? 'open' : 'close' }}">
-						<a href="#" class="nav-link {{-- active --}}">
+					<li class="nav-item has-treeview menu-{{ Request::is('admin/profesores*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('admin/profesores*') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-user"></i><p>Gestion de profesores<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('admin.agregarProfesor') }}" class="nav-link ">
+								<a href="{{ route('admin.agregarProfesor') }}" class="nav-link {{ Request::is('admin/profesores/agregar-profesor') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Agregar profesor</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="" class="nav-link ">
+								<a href="{{ route('admin.profesores') }}" class="nav-link {{ Request::is('admin/profesores') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Visualizar profesores</p>
 								</a>
 							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview menu-{{ Request::is('profesor/documento*') ? 'open' : 'close' }}">
-						<a href="#" class="nav-link {{ Request::is('profesor/documento*') ? 'active' : '' }}">
-							<i class="nav-icon fas fa-file"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="{{ route('profesor.subirDoc') }}" class="nav-link {{ Request::is('profesor/documento') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Subir documento</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ route('profesor.verDoc') }}" class="nav-link {{ Request::is('profesor/documento/ver') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Ver Documentos</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview menu-{{ Request::is('profesor/editar*') ? 'open' : 'close' }}">
-						<a href="#" class="nav-link {{ Request::is('profesor/editar') ? 'active' : '' }}">
-							<i class="nav-icon fas fa-user"></i><p>Perfil</p><i class="fas fa-angle-left right"></i>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="{{ route('profesor.editar')}}" class="nav-link {{ Request::is('profesor/editar') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Editar datos</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ route('profesor.editar.pass') }}" class="nav-link {{ Request::is('profesor/editar/pass') ? 'active' : '' }}">
-									<i class="far fa-circle nav-icon"></i><p>Cambiar contraseña</p>
-								</a>
-							</li>
-							{{-- <li class="nav-item">
-								<a href="#" class="nav-link ">
-									<i class="far fa-circle nav-icon"></i><p>Foto de perfil</p>
-								</a>
-							</li> --}}
 						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">

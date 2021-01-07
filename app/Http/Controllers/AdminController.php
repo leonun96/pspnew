@@ -26,6 +26,11 @@ class AdminController extends Controller
 			'profesores' => $profesores,
 		]);
 	}
+	public function profesores ()
+	{
+		$profesores = Profesores::all();
+		return view('admin.profesores.index')->with(['profesores' => $profesores,]);
+	}
 	public function agregarProfesor(){
 		return view('admin.agregar.profesor');
 	}

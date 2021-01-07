@@ -26,7 +26,8 @@ Route::get('rutas/test', 'HomeController@rutas');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum', 'as' => 'admin.'], function() {
 	Route::get('/', 'AdminController@index')->name('index');
 
-	Route::get('/agregar-profesor','AdminController@agregarProfesor')->name('agregarProfesor');
+	Route::get('profesores/agregar-profesor','AdminController@agregarProfesor')->name('agregarProfesor');
+	Route::get('/profesores', 'AdminController@profesores')->name('profesores');
 	Route::post('/nuevo-profesor','AdminController@nuevoProfesor')->name('nuevoProfesor');
 	
 });
