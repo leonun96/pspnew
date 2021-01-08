@@ -18,13 +18,23 @@
 					<th>Fecha de Nacimiento</th>
 					<th>Telefono</th>
 					<th>Email</th>
-					<th>NEE</th>
-					<th>Eliminar</th>
 					<th>Editar</th>
-					<th>Diagnosticos</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
+				@foreach ($profesores as $profe)
+					<tr>
+						<td>{{$profe->rut}}</td>
+						<td>{{$profe->nombres}}</td>
+						<td>{{$profe->apellidos}}</td>
+						<td>{{$profe->fnac}}</td>
+						<td>{{$profe->telefono}}</td>
+						<td>{{$profe->email}}</td>
+						<td><a href="{{Route('admin.editarProfesor',$profe->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+						<td><a href="" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>

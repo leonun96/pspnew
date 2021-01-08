@@ -27,8 +27,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum', 'as' => 'admi
 	Route::get('/', 'AdminController@index')->name('index');
 
 	Route::get('profesores/agregar-profesor','AdminController@agregarProfesor')->name('agregarProfesor');
+	Route::get('/editar-profesor/{profe}','AdminController@editarProfesor')->name('editarProfesor');
 	Route::get('/profesores', 'AdminController@profesores')->name('profesores');
 	Route::post('/nuevo-profesor','AdminController@nuevoProfesor')->name('nuevoProfesor');
+	Route::put('/update-profeso/{id}','AdminController@updateProfesor')->name('updateProfesor');
+	
 	
 });
 /* #################### ADMIN #################### */

@@ -32,7 +32,11 @@ class AdminController extends Controller
 		return view('admin.profesores.index')->with(['profesores' => $profesores,]);
 	}
 	public function agregarProfesor(){
-		return view('admin.agregar.profesor');
+		return view('admin.profesores.agregar.profesor');
+	}
+	public function editarProfesor(Profesores $profe){
+		
+		return view('admin.profesores.editar.profesor')->with('profesor',$profe);
 	}
 	public function nuevoProfesor(Request $request){
 		
@@ -57,6 +61,31 @@ class AdminController extends Controller
 		$profesor->save();
 
 		return back()->with('alert-success','El profesor se a guardado exitosamente');
+
+	}
+	public function updateProfesor(Request $request , $id){
+		
+		$datos = $request->validate([
+			'rut' => 'required',
+			'nombres' => 'required',
+			'apellidos'=> 'required',
+			'fnac' => 'required',
+			'telefono' => 'required',
+			'email' => 'email|required',
+			'password' => 'required'
+		]);
+
+		$profesor = Profesores::find($id);
+		$profesor->rut = $datos['rut'];
+		$profesor->nombres = $datos['nombres'];
+		$profesor->apellidos = $datos['apellidos'];
+		$profesor->fnac = $datos['fnac'];
+		$profesor->telefono = $datos['telefono'];
+		$profesor->email = $datos['email'];
+		$profesor->password = bcrypt($datos['password']);
+		$profesor->save();
+
+		return back()->with('alert-success','El profesor se a editado exitosamente');
 
 	}
 }
