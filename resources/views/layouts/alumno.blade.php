@@ -63,29 +63,51 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link active">
+					<li class="nav-item has-treeview menu-{{ Request::is('alumno/documentos*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('alumno/documentos*') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-file-alt"></i><p>Documentos<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-							<a href="{{ route('alumno.verDocumentos')}}" class="nav-link "><i class="far fa-circle nav-icon"></i><p>Listado de documentos</p>
+							<a href="{{ route('alumno.verDocumentos')}}" class="nav-link {{ Request::is('alumno/documentos*') ? 'active' : '' }}"><i class="far fa-circle nav-icon"></i><p>Listado de documentos</p>
 								</a>
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-close">
+					{{-- <li class="nav-item has-treeview menu-close">
 						<a href="#" class="nav-link active">
 							<i class="nav-icon fas fa-comments"></i><p>Mensajeria</p>
 						</a>
-					</li>
-					<li class="nav-item has-treeview menu-close">
+					</li> --}}
+					{{-- <li class="nav-item has-treeview menu-{{ Request::is('alumno/editar*') ? 'open' : 'close' }}">
 					<a href="{{ route('alumno.editar') }}" class="nav-link active">
 							<i class="nav-icon fas fa-user"></i><p>Perfil</p>
 						</a>
+					</li> --}}
+					<li class="nav-item has-treeview menu-{{ Request::is('alumno/editar*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('alumno/editar') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-user"></i><p>Perfil</p><i class="fas fa-angle-left right"></i>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{ route('alumno.editar') }}" class="nav-link {{ Request::is('alumno/editar') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Datos</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ route('alumno.editar.pass') }}" class="nav-link {{ Request::is('alumno/editar/pass') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Cambiar contraseña</p>
+								</a>
+							</li>
+							{{-- <li class="nav-item">
+								<a href="#" class="nav-link ">
+									<i class="far fa-circle nav-icon"></i><p>Foto de perfil</p>
+								</a>
+							</li> --}}
+						</ul>
 					</li>
 					<li class="nav-item has-treeview menu-close">
-						<a href="{{ route('alumno.logout') }}" class="nav-link active">
+						<a href="{{ route('alumno.logout') }}" class="nav-link {{-- active --}}">
 							<i class="nav-icon fas fa-sign-out-alt"></i><p>Cerrar Sesion</p>
 						</a>
 					</li>			
@@ -117,27 +139,33 @@
 	<!-- /.content-header -->
 
 	<!-- BODY DONDE IRA CONTENIDO -->
+	@include('flash::message')
+	@if ($errors->any())
+	<div class="alert alert-danger m-2">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif
 	<div class="content">
-	  <div class="container-fluid">
-		<div class="row">
-
-
-			@yield('contenido')
-
-
-		</div><!--fin row-->
-	  </div>
+		<div class="container-fluid">
+			<div class="row">
+				@yield('contenido')
+			</div><!--fin row-->
+		</div>
 	</div>
 	<!-- /.content -->
-  </div>
+</div>
   <!-- /.content-wrapper -->
 
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
+	<!-- Main Footer -->
+	<footer class="main-footer">
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2017-2020 <a href="https://atlasdev.cl">Atlasdev.cl</a>.</strong> All rights reserved.
-  </footer>
+		<strong>Copyright &copy; 2017-2020 <a href="https://atlasdev.cl">Atlasdev.cl</a>.</strong> All rights reserved.
+	</footer>
 </div>
 <!-- ./wrapper -->
 

@@ -123,6 +123,8 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 		/* ########## PERFIL ########## */
 		Route::get('/editar','AlumnosController@editar')->name('editar');
 		Route::post('/editar/perfil/','AlumnosController@editarPerfil')->name('editarPerfil');
+		Route::get('editar/pass', 'AlumnosController@editarPass')->name('editar.pass');
+		Route::post('cambiar/pass', 'AlumnosController@cambiarPass')->name('cambiar.pass');
 		/* ########## PERFIL ########## */
 
 		/* ########## DOCUMENTOS ########## */

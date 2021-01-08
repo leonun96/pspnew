@@ -49,6 +49,9 @@ class LogInController extends Controller
 	/* ########## LOGIN ALUMNOS ########## */
 	public function accesoAlumnos()
 	{
+		if (auth('alumno')->check()) {
+			return redirect()->route('alumno.menu');
+		}
 		return view('alumnos.login');
 	}
 	
