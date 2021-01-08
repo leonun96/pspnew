@@ -46,18 +46,18 @@
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- ESTO ES EL SIDEBAR DEL LADO IZQUIERO DE LA PANTALLA !! -->
-					<li class="nav-item has-treeview menu-close">
-						<a href="#" class="nav-link active">
+					<li class="nav-item has-treeview menu-{{ Request::is('alumno/actividades*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('alumno/actividades*') ? 'active' : '' }}">
 							<i class="nav-icon fas fa-edit"></i><p>Actividades<i class="fas fa-angle-left right"></i></p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{route('alumno.verActividades')}}" class="nav-link">
+								<a href="{{route('alumno.verActividades')}}" class="nav-link {{ Request::is('alumno/actividades') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Realizar actividades</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ route('alumno.actividades.resultados') }}" class="nav-link ">
+								<a href="{{ route('alumno.actividades.resultados') }}" class="nav-link {{ Request::is('alumno/actividades/resultados') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Ver resultados</p>
 								</a>
 							</li>
