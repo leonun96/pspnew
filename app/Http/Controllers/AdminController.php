@@ -88,4 +88,11 @@ class AdminController extends Controller
 		return back()->with('alert-success','El profesor se a editado exitosamente');
 
 	}
+
+	public function alumnos ()
+	{
+		$alumnos = Alumnos::all()->load(['profesores']);
+		return view('admin.alumnos.index')->with(['alumnos' => $alumnos,]);
+	}
+
 }

@@ -66,6 +66,24 @@
 							</li>
 						</ul>
 					</li>
+					<li class="nav-item has-treeview menu-{{ Request::is('admin/alumnos*') ? 'open' : 'close' }}">
+						<a href="#" class="nav-link {{ Request::is('admin/alumnos*') ? 'active' : '' }}">
+							<i class="nav-icon fas fa-user"></i><p>Gestion de alumnos<i class="fas fa-angle-left right"></i></p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a href="{{ route('admin.agregarProfesor') }}" class="nav-link {{ Request::is('admin/profesores/agregar-profesor') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{ route('admin.alumnos') }}" class="nav-link {{ Request::is('admin/alumnos') ? 'active' : '' }}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Visualizar alumnos</p>
+								</a>
+							</li>
+						</ul>
+					</li>
 					<li class="nav-item has-treeview menu-close">
 						<form method="post" id="close_session" action="{{ route('logout') }}">
 							@csrf
