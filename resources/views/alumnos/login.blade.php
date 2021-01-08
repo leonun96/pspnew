@@ -2,21 +2,21 @@
 <html>
 <head>
 	<title>Animated Login Form</title>
-	<link rel="stylesheet" type="text/css" href="{{asset('login/css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('login1/css/style.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<img class="wave" src="{{asset('login/img/wave.png')}}">
+	<img class="wave" src="{{asset('login1/img/wave.png')}}">
 	<div class="container">
 		<div class="img">
-			<img src="{{asset('login/img/bg.svg')}}">
+			<img src="{{asset('login1/img/bg.svg')}}">
 		</div>
 		<div class="login-content">
 			<form action="{{ route('alumno.loginAlumno') }}" method="post">
 				@csrf
-				<img src="{{asset('login/img/avatar.svg')}}">
+				<img src="{{asset('login1/img/avatar.svg')}}">
 				<h2 class="title">Bienvenido</h2>
 				<div class="input-div one">
 				   <div class="i">
@@ -41,6 +41,6 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="{{asset('login/js/main.js')}}"></script>
+	<script type="text/javascript" src="{{asset('login1/js/main.js')}}"></script>
 </body>
 </html>
