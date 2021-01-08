@@ -24,7 +24,8 @@ class HomeController extends Controller
 	}
 	public function index ()
 	{
-		return view('home');
+		// return view('home'); //DOS RUTAS/PANTALLAS
+		return view('profesores.login');
 	}
 	public function artisan ()
 	{
