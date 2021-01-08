@@ -112,7 +112,9 @@ class AlumnosController extends Controller
 	public function verResultados()
 	{
 		// $resultados = ResultadoEvaluacion::where('alumnos_id', auth('alumno')->user()->id )->get();
-		$resultados = ActividadesAsignadas::where('alumnos_id', auth('alumno')->user()->id)->get();
+		$resultados = ActividadesAsignadas::where('alumnos_id', auth('alumno')->user()->id)
+		->where('estado','FINALIZADO')
+		->get();
 		return view('alumnos.ver.resultados')
 		->with('resultados',$resultados);
 	}
