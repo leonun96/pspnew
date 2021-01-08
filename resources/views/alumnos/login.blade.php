@@ -43,27 +43,27 @@
 				</div>
 			{!! $errors->first('password') !!}
 				<div class="row">
-					<div class="col-8">
+					{{-- <div class="col-8">
 						<div class="icheck-primary">
 							<input type="checkbox" id="remember">
 							<label for="remember">
 								Recuérdame
 							</label>
 						</div>
-					</div>
+					</div> --}}
 					<!-- /.col -->
-					<div class="col-4">
+					<div class="col-12 text-center">
 						<button type="submit" class="btn btn-success btn-block">Entrar</button>
 					</div>
 					<!-- /.col -->
 				</div>
 			</form>
-			<p class="mb-1">
+			<p class="mb-1 mt-2">
 				<a href="#">No recuerdas tu contraseña?</a>
 			</p>
-			<p class="mb-0">
+			{{-- <p class="mb-0">
 				<a href="#" class="text-center">Registrar una nueva membresía</a>
-			</p>
+			</p> --}}
 		</div>
 		<!-- /.login-card-body -->
 	</div>
