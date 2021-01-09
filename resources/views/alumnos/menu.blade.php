@@ -3,40 +3,39 @@
 
 @section('contenido')
 
-<div class="row col-12">
-	{{--  --}}
-	<div class="row">
-		<div class="col-6">
-			<div class="small-box bg-info">
-				<div class="inner">
-					<h3>{{ $actividade}}</h3>
-					<p>Total de actividades</p>
+	<div class="container-fluid">
+		<div class="row">	
+			<div class="col-md-3 col-sm-6 col-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-success"><i class="fas fa-file-alt"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">Total de actividades</span>
+						<span class="info-box-number center">{{ $actividade}}</span>
+						<a href="{{ route('alumno.verActividades') }}" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+					</div>
 				</div>
-				<div class="icon">
-					<i class="ion ion-bag"></i>
-				</div>
-				<a href="{{ route('alumno.verActividades') }}" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
-		<div class=" col-6">
-			<div class="small-box bg-success">
-				<div class="inner">
-					<h3>{{ $documento }}</h3>
-					<p>Total de documentos</p>
+		<div class="row">	
+			<div class="col-md-3 col-sm-6 col-12">
+				<div class="info-box">
+					<span class="info-box-icon bg-info"><i class="fas fa-file-download"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">Total de documentos</span>
+						<span class="info-box-number center">{{ $documento }}</span>
+						<a href="{{ route('alumno.verDocumentos') }}" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
+					</div>
 				</div>
-				<div class="icon">
-					<i class="ion ion-stats-bars"></i>
-				</div>
-				<a href="{{ route('alumno.verDocumentos') }}" class="small-box-footer">Mas informacion <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
+
 	<div class="col-12">
 		<button type="button" class="btn btn-warning  btn-block" data-toggle="modal" data-target="#exampleModal">
 			<i class="fas fa-envelope-open-text"></i> Enviar Correo al profesor
 		</button>
 	</div>
-</div>
+
 
 
 
