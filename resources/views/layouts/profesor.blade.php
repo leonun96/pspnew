@@ -38,7 +38,7 @@
 			<!-- ESTO ES EL USUARIO CON SU FOTITO -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
-					<img src="{{ asset('AdminLte/img/user5-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+					<img src="{{ asset('AdminLte/img/avatar.jpg') }}" class="img-circle elevation-2" alt="User Image">
 				</div>
 				<div class="info">
 					<a href="{{ route('profesor.menu') }}" class="d-block">{{ Auth::guard('profesores')->user()->nombres }} {{ Auth::guard('profesores')->user()->apellidos }}</a>
