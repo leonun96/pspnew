@@ -42,17 +42,10 @@ class AlumnosController extends Controller
 	{
 		// $actividad= $actividad->load(['preguntas','preguntas.respuestas']);
 		$actividad= $actividad->load(['preguntas','preguntas.respuestas' => function ($query){
-            $query->inRandomOrder();
-        }]);
-		// foreach ($actividad->preguntas as $pregunta) {
-		// 	dump($pregunta);
-		// 	foreach($pregunta->respuestas as $respuestas){
-		// 		dump($respuestas);
-		// 	}
-		// }
+			$query->inRandomOrder();
+		}]);
 		return view('alumnos.ver.actividad')
 		->with('actividad',$actividad);
-		
 	}
 	public function finalizada(Request $request, $id)
 	{

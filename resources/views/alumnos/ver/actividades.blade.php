@@ -23,7 +23,7 @@
 			@if(!is_null($actividad->actividades))
 			<tr>
 				<th scope="row">{{ $actividad->id }}</th>
-				<td><a href="{{ Route('alumno.realizarAct',$actividad->id) }}">{{ $actividad->actividades->nombre }}</a></td>
+				<td><a href="{{ Route('alumno.realizarAct', $actividad) }}">{{ $actividad->actividades->nombre }}</a></td>
 				<td>{{$actividad->actividades->subcategorias->categorias->nombre }}</td>
 				<td>{{ $actividad->fecha_inicio }}</td>
 				<td>{{ $actividad->fecha_termino }}</td>
