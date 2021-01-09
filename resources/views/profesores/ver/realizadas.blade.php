@@ -60,7 +60,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col col-12 align-self-center text-center ">
-						
+						{{-- @dump($fin) --}}
 						<div class="form-group">
 							@foreach ($fin->resultados->detalle as $detalle)
 							<p class="text-bold uppercase h1">{{$detalle->preguntas->pregunta}}</p>
@@ -83,11 +83,11 @@
 								<div class="row">
 									<div class="col">
 										<label for="puntaje">Puntaje</label>
-										<input type="text" class="form-control" name="puntaje" >
+										<input type="text" class="form-control" name="puntaje" value="{{ !is_null($fin->resultados) ? $fin->resultados->puntaje : '' }}">
 									</div>
 									<div class="col">
 										<label for="nota">Nota</label>
-										<input type="text" class="form-control" name="nota" >
+										<input type="text" class="form-control" name="nota" value="{{ !is_null($fin->resultados) ? $fin->resultados->nota : '' }}">
 									</div>
 								</div>
 								<div class="modal-footer col-12">

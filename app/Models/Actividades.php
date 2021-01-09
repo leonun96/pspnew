@@ -24,5 +24,9 @@ class Actividades extends Model
 	{
 		return $this->hasMany('App\Models\Preguntas');
 	}
+	public function asignadas ()
+	{
+		return $this->hasMany('App\Models\ActividadesAsignadas', 'actividades_id');
+	}
 	
 }

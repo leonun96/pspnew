@@ -62,6 +62,10 @@
 </div>
 
 @foreach ($actividades as $act)
+@php
+$asignadas = $act->asignadas;
+// dump($asignadas);
+@endphp
 <div class="modal fade" id="modal-{{ $act->id }}">
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
@@ -77,23 +81,27 @@
 					<div class="row">
 						<div class="col">
 							<label for="desde">Desde</label>
-						  <input type="date" class="form-control" name="desde" placeholder="Desde" value="{{ date('Y-m-d') }}">
+							<input type="date" class="form-control" name="desde" placeholder="Desde" value="{{ date('Y-m-d') }}">
 						</div>
 						<div class="col">
 							<label for="hasta">Hasta</label>
-						  <input type="date" class="form-control" name="hasta" placeholder="Hasta">
+							<input type="date" class="form-control" name="hasta" placeholder="Hasta">
 						</div>
 					</div>
-					<div class="col mt-1">
+					<div class="col mt-1" hidden>
 						<label for="tiempo">Tiempo en minutos</label>
-						<input type="number" class="form-control" name="tiempo" placeholder="tiempo">
+						<input type="number" class="form-control" name="tiempo" value="90" readonly placeholder="tiempo">
 					</div>
 					<h5 class="text-center uppercase text-bold mt-2">Listado de alumnos</h5>
 					@foreach ($alumnos as $alumno)
+					@php
+					$res = $asignadas->where('alumnos_id', $alumno->id)->count();
+					// dump($res);
+					@endphp
 					<div class="input-group mb-2 mt-2">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
-								<input type="checkbox" aria-label="Checkbox for following text input" name="alumnos_id[]" value="{{$alumno->id}}">
+								<input type="checkbox" aria-label="Checkbox for following text input" name="alumnos_id[]" value="{{$alumno->id}}" {{ ($res > 0) ? 'checked' : '' }}>
 							</div>
 						</div>
 						<input type="text" class="form-control text-center uppercase text-bold " 
