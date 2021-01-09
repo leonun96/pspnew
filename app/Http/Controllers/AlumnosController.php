@@ -31,12 +31,12 @@ class AlumnosController extends Controller
 
 	public function menuPrincipal()
 	{
-		$alumnos = Alumnos::all()->count();
-		$act = Actividades::all()->count();
+		$total_act = ActividadesAsignadas::where('alumnos_id',auth('alumno')->user()->id)->count();
+		$total_doc = DocumentosAsignados::where('alumnos_id',auth('alumno')->user()->id)->count();
 		// dd($alumnos);
 		return view('alumnos.menu')
-		->with('act',$act)
-		->with('alumnos',$alumnos);
+		->with('actividade',$total_act)
+		->with('documento',$total_doc);
 	}
 	public function realizarAct($id)
 	{
