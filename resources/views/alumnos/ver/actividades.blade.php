@@ -19,11 +19,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($actividades as $actividad)
+			@foreach ($actividades as $key => $actividad)
 			@if(!is_null($actividad->actividades))
 			<tr>
-				<th scope="row">{{ $actividad->id }}</th>
-				<td><a href="{{ Route('alumno.realizarAct', $actividad) }}">{{ $actividad->actividades->nombre }}</a></td>
+				<th scope="row">{{ $key + 1 }}</th>
+				<td><a href="{{ Route('alumno.realizarAct', $actividad->actividades_id) }}">{{ $actividad->actividades->nombre }}</a></td>
 				<td>{{$actividad->actividades->subcategorias->categorias->nombre }}</td>
 				<td>{{ $actividad->fecha_inicio }}</td>
 				<td>{{ $actividad->fecha_termino }}</td>

@@ -38,10 +38,9 @@ class AlumnosController extends Controller
 		->with('act',$act)
 		->with('alumnos',$alumnos);
 	}
-	public function realizarAct(Actividades $actividad)
+	public function realizarAct($id)
 	{
-		// $actividad= $actividad->load(['preguntas','preguntas.respuestas']);
-		$actividad= $actividad->load(['preguntas','preguntas.respuestas' => function ($query){
+		$actividad =Actividades::find($id)->load(['preguntas','preguntas.respuestas' => function ($query){
 			$query->inRandomOrder();
 		}]);
 		return view('alumnos.ver.actividad')
@@ -49,7 +48,7 @@ class AlumnosController extends Controller
 	}
 	public function finalizada(Request $request, $id)
 	{
-		//  dd('En desarrollo',$request);
+		// dd('En desarrollo',$request, $id);
 		if (!isset($request->pregunta) or count($request->pregunta) == 0) {
 			$asig = ActividadesAsignadas::where('actividades_id',$id)
 				->where('alumnos_id', auth('alumno')->user()->id)
