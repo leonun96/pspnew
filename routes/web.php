@@ -99,6 +99,7 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 
 		Route::get('/diagnostico/nuevo/{id}', 'ProfesorController@nuevoDiagnostico')->name('nuevoDiagnostico');
 		Route::post('/diagnostico/nuevo','ProfesorController@diagnostico')->name('diagnostico');
+		Route::get('/diagnostico/eliminar/{id}', 'ProfesorController@borrarDiagnostico')->name('borrarDiagnostico');
 		/* ########## DIAGNOSTICO ########## */
 	});
 });

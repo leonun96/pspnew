@@ -171,14 +171,26 @@
 			<div class="modal-body">
 				<div class="card-body">
 					@php
-					$diagnosticos = DB::table('diagnosticos')
-					->where('alumnos_id',$alumno->id)
+					$diagnosticos = App\Models\Diagnosticos::where('alumnos_id',$alumno->id)
+					->orderBy('id','DESC')
 					->get();
-
 					@endphp
 
 					@foreach ($diagnosticos as $diagnostico)
-					<p>{!! $diagnostico->diagnostico !!}</p>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body text-dark">
+									<p>{!! $diagnostico->diagnostico !!}</p>
+								</div>
+								<div class="card-footer text-dark">
+									<p>Fecha: {!! $diagnostico->created_at !!}</p>
+									<a href="{{Route('profesor.borrarDiagnostico',$diagnostico->id)}}" class="btn btn-outline-danger btn-block">Eliminar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 					@endforeach
 				</div>        
 				<div class="card card-footer">

@@ -497,6 +497,13 @@ class ProfesorController extends Controller
 		return redirect()->route('profesor.verAlumnos')
 		->with('flash','Se creo diagnostico correctamente');;
 	}
+	public function borrarDiagnostico($id){
+
+		$diagnostico = Diagnosticos::find($id);
+		$diagnostico->delete();
+		return redirect()->route('profesor.verAlumnos')
+		->with('flash','Se borro el diagnostico correctamente');;
+	}
 
 
 
