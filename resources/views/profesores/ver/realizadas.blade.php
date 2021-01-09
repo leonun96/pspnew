@@ -31,12 +31,14 @@
 			</thead>
 			<tbody>
 				@foreach ($finalizadas as $key =>  $fin)
+				@if(!is_null($fin->actividades))
 				<tr>
 					<td>{{ $key+1 }}</td>
 					<td>{{ $fin->actividades->nombre }}</td>
 					<td>{{ $fin->alumnos->nombres }}</td>
 					<td><button type="button" class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#modal-{{ $fin->id}}"><i class="fas fa-eye"></i></button></td>
 				</tr>
+				@endif
 				@endforeach
 			</tbody>
 		</table>
@@ -46,6 +48,7 @@
 
 
 @foreach ($finalizadas as $fin)
+@if(!is_null($fin->actividades))
 <!-- Modal -->
 <div class="modal fade" id="modal-{{$fin->id}}" tabindex="-1" role="dialog" aria-labelledby="titulo" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -104,6 +107,7 @@
 	  </div>
 	</div>
   </div>
+  @endif
   @endforeach
 
 @endsection
