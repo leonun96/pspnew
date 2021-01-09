@@ -70,6 +70,7 @@ Route::group(['prefix' => 'profesor', 'as' => 'profesor.'], function() {
 			Route::post('store','ProfesorController@nuevaActividad')->name('nuevaActividad');
 			Route::get('preguntas/{actividad}','ProfesorController@agregarPreguntas')->name('agregarPreguntas');
 			Route::put('pregunta/{actividad}/store','ProfesorController@nuevaPregunta')->name('nuevaPregunta');
+			Route::get('pregunta/{id}/eliminar', 'ProfesorController@eliminarPregunta')->name('eliminarPregunta');
 			Route::get('/', 'ProfesorController@verActividades')->name('verActividades');
 			Route::get('actividades/{id}/eliminar', 'ProfesorController@eliminarAct')->name('eliminar.actividad');
 			Route::put('actividades/asignar/{id}','ProfesorController@asignarActividad')->name('asignarActividad');

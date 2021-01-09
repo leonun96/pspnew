@@ -91,6 +91,7 @@
 				<button type="button" class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#moda-{{ $pregunta->id }}">
 					Editar Respuestas
 				</button>
+				<a href="{{ Route('profesor.eliminarPregunta' , $pregunta->id) }}" class="btn btn-block btn-outline-danger">Eliminar</a>
 			</div>
 			@endforeach
 			<div class="row mt-2">

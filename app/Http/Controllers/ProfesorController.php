@@ -304,6 +304,13 @@ class ProfesorController extends Controller
 		return back()
 			->with('flash','Las preguntas han sido editadas exitosamente');
 	}
+	public function eliminarPregunta($id){
+
+		$pregunta = Preguntas::find($id);
+		$pregunta->delete();
+		return redirect()->back()
+		->with('flash','Se borro la pregunta correctamente');
+	}
 	
 	public function verActividades()
 	{
