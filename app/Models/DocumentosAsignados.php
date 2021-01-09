@@ -8,21 +8,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DocumentosAsignados extends Model
 {
-    use HasFactory,SoftDeletes;
-    protected $table = "documentos_asignados";
-    protected $guarded = [];
+	use HasFactory,SoftDeletes;
+	protected $table = "documentos_asignados";
+	protected $guarded = [];
 
-    public function profesores()
+	public function profesores()
 	{
 		return $this->belongsTo('App\Models\Documentos');
-    }
-    public function alumnos()
+	}
+	public function alumnos()
 	  {
 		return $this->belongsTo('App\Models\Alumnos');
-    }
-    public function documentos()
+	}
+	public function documentos()
 	  {
 		return $this->belongsTo('App\Models\Documentos');
-    }
-    
+	}
+	
 }

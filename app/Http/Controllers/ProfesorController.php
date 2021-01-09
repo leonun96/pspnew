@@ -465,12 +465,16 @@ class ProfesorController extends Controller
 		
 		// dump($datos);
 		foreach($datos['alumnos_id'] as $dato){
-	
-		  	$asignado= new DocumentosAsignados();
-			$asignado->documentos_id = $documento->id;
-			$asignado->alumnos_id = $dato;
-			$asignado->profesores_id = Auth()->user()->id;
-			$asignado->save();
+			DocumentosAsignados::updateOrCreate([
+				'documentos_id' => $documento->id,
+				'alumnos_id' => $dato,
+				'profesores_id' => Auth()->user()->id,
+			]);
+			// $asignado= new DocumentosAsignados();
+			// $asignado->documentos_id = $documento->id;
+			// $asignado->alumnos_id = $dato;
+			// $asignado->profesores_id = Auth()->user()->id;
+			// $asignado->save();
 		}
 		Flash::success('El documento se asigno correctamente');
 		return back();
