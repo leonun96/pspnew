@@ -66,6 +66,7 @@ class AlumnosController extends Controller
 			$asig = ActividadesAsignadas::where('actividades_id',$id)
 				->where('alumnos_id', auth('alumno')->user()->id)
 				->first();
+			// VALIDAR SI ESTÁ o NO ASIGNADA
 			$total = ResultadoEvaluacion::updateOrCreate([
 				'actividades_asignadas_id' => $asig->id,
 				'puntaje' => null,
