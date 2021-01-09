@@ -342,18 +342,20 @@ class ProfesorController extends Controller
 		return back()
 		->with('flash','La actividad a sido editada exitosamente');
 	}
-	public function asignarActividad(Actividades $id)
-	{	
-		$actividad = $id;
-		
-		$datos = request()->validate([
+	public function asignarActividad(Request $request, $id)
+	{
+		$actividad = Actividades::find($id);
+		$datos = $request->validate([
 			'desde' => 'required',
 			'hasta' => 'required',
 			'tiempo' => 'required',
 			'alumnos_id'=> 'required'
+		], [
+			'desde.required' => 'Debe seleccionar el inicio de la actividad',
+			'hasta.required' => 'Debe seleccionar el fin de la actividad',
+			'tiempo.required' => 'Ponga el tiempo',
+			'alumnos_id.required' => 'Seleccione al menos un alumno',
 		]);
-		
-		
 		foreach($datos['alumnos_id'] as $dato){
 		//   dump($dato);
 			$asignada= new ActividadesAsignadas;
@@ -366,10 +368,8 @@ class ProfesorController extends Controller
 			$asignada->estado = "ACTIVO";
 			$asignada->save();
 		}
-
 		return back()
 		->with('flash','La actividad se asigno correctamente');
-
 	}
 	public function verActRealizadas()
 	{

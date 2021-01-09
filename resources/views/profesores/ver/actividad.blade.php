@@ -66,7 +66,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content bg-purple">
 			<div class="modal-header">
-				<h4 class="modal-title">Asignar Actividad </h4>
+				<h4 class="modal-title">Asignar Actividad {{ $act->nombre }}</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span></button>
 			</div>
@@ -77,7 +77,7 @@
 					<div class="row">
 						<div class="col">
 							<label for="desde">Desde</label>
-						  <input type="date" class="form-control" name="desde" placeholder="Desde">
+						  <input type="date" class="form-control" name="desde" placeholder="Desde" value="{{ date('Y-m-d') }}">
 						</div>
 						<div class="col">
 							<label for="hasta">Hasta</label>
