@@ -113,6 +113,12 @@ class AlumnosController extends Controller
 	}
 	public function verDetalles($id)
 	{
+		$detalle = ResultadoEvaluacion::find($id);
+		if(is_null($detalle)){
+			Flash::error('Actividad aun no evaluada');
+			return redirect()->back();
+		}
+		
 		$detalle = ResultadoEvaluacion::find($id)->load(['detalle','detalle.preguntas','detalle.respuestas']);
 		return view('alumnos.ver.detalles')->with('detalle',$detalle);
 	}

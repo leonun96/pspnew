@@ -18,6 +18,7 @@
                     </p>
                 @endforeach
             </div>
+            <a href="{{Route('alumno.actividades.resultados')}}" class="btn btn-outline-secondary btn-block">Volver</a>
         </div>
         </div>
 	</div>

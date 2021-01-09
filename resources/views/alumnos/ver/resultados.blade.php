@@ -6,8 +6,31 @@
 
 <h1 class="text-center uppercase text-bold">Resultado de evaluaciones</h1>
 
-<div class="row col-12">
-	<table class="table purple">
+<div class="row">
+	@foreach ($resultados as $resultado)
+	<div class="col-6">
+		<div class="small-box bg-success justify-content-center">
+			<div class="inner">
+			  <h3>{{$resultado->resultados->nota ? $resultado->resultados->nota : '--'}}</h3>
+			  <sup style="font-size: 20px">Puntaje: {{ $resultado->resultados->puntaje ? $resultado->resultados->puntaje : '--' }}</sup>
+			  <h5 class="mt-2"> {{ $resultado->actividades->nombre }}</h5>
+			  <small>{{ $resultado->actividades->subcategorias->categorias->nombre }}</small>
+			</div>
+			<div class="icon">
+			  <i class="ion ion-stats-bars"></i>
+			</div>
+			<a href="{{route('alumno.detalles', $resultado->id)}}" class="small-box-footer">
+			  Ver detalles <i class="fas fa-arrow-circle-right"></i>
+			</a>
+		</div>
+	</div>
+	@endforeach
+</div>
+	
+
+
+
+	{{-- <table class="table purple">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Actividad</th>
@@ -30,6 +53,6 @@
 			</tr>
 			@endforeach
 		</tbody>
-	</table>
+	</table> --}}
 </div>
 @endsection
