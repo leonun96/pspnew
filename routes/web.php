@@ -33,7 +33,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:sanctum', 'as' => 'admi
 	Route::put('/update-profeso/{id}','AdminController@updateProfesor')->name('updateProfesor');
 
 	Route::get('/alumnos', 'AdminController@alumnos')->name('alumnos');
-	
+	Route::get('alumnos/agregar-alumno','AdminController@agregarAlumno')->name('agregarAlumno');
+	Route::post('/nuevo-alumno','AdminController@nuevoAlumno')->name('nuevoAlumno');
 	
 });
 /* #################### ADMIN #################### */

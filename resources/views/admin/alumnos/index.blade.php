@@ -35,7 +35,7 @@
                         <td>{{$alumno->email}}</td>
                         <td>{{$alumno->NEE}}</td>
                         <td>{{$alumno->profesores->nombres}}</td>
-						<td><a href="{{Route('admin.editarProfesor',$alumno->id)}}" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
+						<td><a href="" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
 						<td><a href="" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 					</tr>
 				@endforeach

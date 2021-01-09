@@ -72,7 +72,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ route('admin.agregarProfesor') }}" class="nav-link {{ Request::is('admin/profesores/agregar-profesor') ? 'active' : '' }}">
+								<a href="{{ route('admin.agregarAlumno') }}" class="nav-link {{ Request::is('admin/alumnos/agregar-alumno') ? 'active' : '' }}">
 									<i class="far fa-circle nav-icon"></i><p>Agregar alumno</p>
 								</a>
 							</li>

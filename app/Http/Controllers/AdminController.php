@@ -94,5 +94,12 @@ class AdminController extends Controller
 		$alumnos = Alumnos::all()->load(['profesores']);
 		return view('admin.alumnos.index')->with(['alumnos' => $alumnos,]);
 	}
+	public function agregarAlumno(){
+		$profesores = Profesores::all();
+		return view('admin.alumnos.agregar.alumno')->with(['profesores' => $profesores]);
+	}
+	public function nuevoAlumno(Request $request){
+		
+	}
 
 }
