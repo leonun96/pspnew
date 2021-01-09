@@ -455,11 +455,11 @@ class ProfesorController extends Controller
 		->with('alumnos',$alumnos)
 		->with('documentos',$documentos);
 	}
-	public function asignarDocumento(Documentos $id){
+	public function asignarDocumento(Request $request, $id){
 
-		$documento = $id;
+		$documento = Documentos::find($id);
 		
-		$datos = request()->validate([
+		$datos = $request->validate([
 			'alumnos_id'=> 'required'
 		]);
 		
