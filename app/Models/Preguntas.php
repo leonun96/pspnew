@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Preguntas extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 	protected $table='preguntas';
 	protected  $guarded = [];
 	public function actividades ()
