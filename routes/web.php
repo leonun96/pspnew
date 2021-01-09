@@ -132,6 +132,7 @@ Route::group(['prefix' => 'alumno', 'as' => 'alumno.'], function() {
 
 		/* ########## DOCUMENTOS ########## */
 		Route::get('/documentos/ver','AlumnosController@verDocumentos')->name('verDocumentos');
+		Route::get('documentos/{id}/descargar', 'AlumnosController@descargarDoc')->name('descargar_doc');
 		/* ########## DOCUMENTOS ########## */
 	});
 });

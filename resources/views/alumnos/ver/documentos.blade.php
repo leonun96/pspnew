@@ -18,7 +18,7 @@
 			@foreach ($documentos as $doc)
 			<tr>
 				<td>{{ $doc->documentos->ruta }}</td>
-				<td><a href="" class="btn btn-outline-success">Descargar</a></td>
+				<td><a href="{{ route('alumno.descargar_doc', $doc->documentos->id) }}" class="btn btn-outline-success">Descargar</a></td>
 			</tr>
 			@endforeach
 		</tbody>

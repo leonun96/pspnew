@@ -21,6 +21,7 @@ use App\Models\ActividadesAsignadas;
 use App\Models\DocumentosAsignados;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AlumnosController extends Controller
 {
@@ -127,6 +128,12 @@ class AlumnosController extends Controller
 		$documentos = DocumentosAsignados::where('alumnos_id', Auth('alumno')->user()->id)->get();
 		return view('alumnos.ver.documentos')
 		->with('documentos',$documentos);
+	}
+	public function descargarDoc ($id)
+	{
+		$doc = Documentos::find($id);
+		// return Storage::download(public_path('archivos/'.$doc->ruta));
+		return response()->download(public_path('archivos/'.$doc->ruta), $doc->ruta);
 	}
 
 	public function editar(){

@@ -472,8 +472,8 @@ class ProfesorController extends Controller
 			$asignado->profesores_id = Auth()->user()->id;
 			$asignado->save();
 		}
-		return back()
-		->with('flash','El documento se asigno correctamente');
+		Flash::success('El documento se asigno correctamente');
+		return back();
 	}
 	public function downloadDoc ($nombre)
 	{
