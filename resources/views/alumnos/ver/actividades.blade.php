@@ -1,5 +1,6 @@
 @extends('layouts.alumno')
 @section('titulo', 'Inicio')
+@section('direccion', 'Actividades')
 
 @section('contenido')
 

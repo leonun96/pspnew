@@ -1,5 +1,6 @@
 @extends('layouts.alumno')
 @section('titulo', 'Inicio')
+@section('direccion', 'Actividad')
 
 @section('contenido')
 <div class="container">
