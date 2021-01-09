@@ -5,8 +5,28 @@
 
 <h1 class="text-center uppercase text-bold">Listado de actividades</h1>
 
-<div class="row col-12">
-	<table class="table purple">
+<div class="row">
+	<div class="container">
+		<div class="col-12">
+			@foreach ($actividades as $key => $actividad)
+			@if(!is_null($actividad->actividades))
+			<a href="{{ Route('alumno.realizarAct', $actividad->actividades_id) }}">
+				<div class="info-box bg-info">
+					<span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+					<div class="info-box-content">
+					<span class="info-box-text text-bold text-uppercase">{{ $actividad->actividades->nombre }}</span>
+					<span class="info-box-number">Fecha Inicio : {{ date('d-m-Y', strtotime( $actividad->fecha_inicio )) }}</span>
+					<span class="info-box-number">Fecha Termino : {{ date('d-m-Y', strtotime( $actividad->fecha_termino )) }}</span>
+					<span class="progress-description">{{$actividad->actividades->subcategorias->categorias->nombre }}</span>
+					</div>
+				</div>
+			</a>
+			  @endif
+			  @endforeach
+		</div>
+	</div>
+	</div>
+	{{-- <table class="table purple">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
@@ -33,7 +53,7 @@
 			@endif
 			@endforeach
 		</tbody>
-	</table>
-</div>
+	</table> --}}
+
 		
 @endsection
