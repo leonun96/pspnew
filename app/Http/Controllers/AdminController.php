@@ -99,7 +99,32 @@ class AdminController extends Controller
 		return view('admin.alumnos.agregar.alumno')->with(['profesores' => $profesores]);
 	}
 	public function nuevoAlumno(Request $request){
-		
+
+		$datos = $request->validate([
+			'rut' => 'required',
+			'nombres' => 'required',
+			'apellidos'=> 'required',
+			'fnac' => 'required',
+			'telefono' => 'required',
+			'email' => 'email|required',
+			'nee' =>'required',
+			'profesor' => 'required',
+			'password' => 'required'
+		]);
+
+		$alumno = new Alumnos;
+		$alumno->rut = $datos['rut'];
+		$alumno->nombres = $datos['nombres'];
+		$alumno->apellidos = $datos['apellidos'];
+		$alumno->fnac = $datos['fnac'];
+		$alumno->telefono = $datos['telefono'];
+		$alumno->email = $datos['email'];
+		$alumno->NEE = $datos['nee'];
+		$alumno->profesores_id = $datos['profesor'];
+		$alumno->password = bcrypt($datos['password']);
+		$alumno->save();
+		return back()->with('alert-success','El alumno se a guardado exitosamente');
+
 	}
 
 }
