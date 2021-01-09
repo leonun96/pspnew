@@ -9,6 +9,7 @@
 
 <div class="row">
 	@foreach ($resultados as $resultado)
+	@if(!is_null($resultado->resultados) && !is_null($resultado->actividades))
 	<div class="col-6">
 		<div class="small-box bg-success justify-content-center">
 			<div class="inner">
@@ -25,6 +26,7 @@
 			</a>
 		</div>
 	</div>
+	@endif
 	@endforeach
 </div>
 	
